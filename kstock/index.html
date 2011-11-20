@@ -8,7 +8,7 @@
 		}
 		
 		body {
-			background-color: #4EBAFF;
+			background-color: #494949;
 			font-family: "맑은 고딕", arial, sans-serif, gulim;
 			color: gray;
 		}
@@ -113,13 +113,45 @@
 			-webkit-border-radius: 10px;
 			-moz-border-radius: 10px;		
 		}
+		
+		.like-buttons{
+			float: right;
+			padding-top: 6px;
+		}
+		
 	</style>
 	
+	<!-- 구글 +1 버튼 -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
 		{lang: 'ko'}
+	</script>
+	
+	<!-- 구글 analytics -->
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-21538497-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
 	</script>	
 </head>
 <body>
+	<div id="fb-root"></div>
+	<script>
+		<!-- 페이스북 좋아요 버튼 -->
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<div id="content">
 		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
 			<img class="icon" src="http://code.google.com/p/monkeylabs/logo?cct=1320242411" />
@@ -128,14 +160,18 @@
 		<div>
 			<div class="title-deco"></div>
 			<div class="title">KStock</div>
-			<g:plusone></g:plusone>
+			<div class="like-buttons">
+				<div style="margin-bottom: 4px;" class="fb-like" data-href="http://jungilhan.github.com/kstock/index.html" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></div>
+				<br />
+				<g:plusone size="medium"></g:plusone>
+			</div>
 			<div class="separator-bar unselectable"></div>
 		</div>		
 		
 		<div id="download" style="cursor: pointer;" onclick="location.href='http://monkeylabs.googlecode.com/files/KStock-1.0.0.crx';">내려받기</div>
 		<h3>소개</h3>
 		<p class="desc">			
-			KStock은 구글 크롬 브라우저에서 동작하는 chrome extensions 프로그램입니다. 코스피/코스닥 및 관심있는 증권 정보를 크롬 브라우저에서 실시간으로 확인하세요. <span style="color: #FC575E; font-weight: bold;">:)</span>
+			KStock은 구글 크롬 브라우저에서 동작하는 chrome extensions 프로그램입니다. 코스피/코스닥 및 관심있는 증권 정보를 크롬 브라우저에서 실시간으로 확인하세요. <span style="color: #4EBAFF; font-weight: bold;">:)</span>
 			<br /><br />
 			설치 및 사용방법은 매우 간단합니다. 크롬 브라우저에서 오른쪽에 보이는 내려받기 버튼을 클릭한 뒤, 설치가 완료되면 KStock 아이콘을 눌러 언제든지 증권 정보를 확인 할 수 있습니다.
 		</p>
