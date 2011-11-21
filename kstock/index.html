@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<style type="text/css">
@@ -127,12 +127,44 @@
 			padding-top: 6px;
 		}
 		
-		.like-img {
+		#like-arrow {
 			position: absolute;
+			visibility: hidden;
 			top: 110px;
-			right: 240px;
+		}
+		
+		#like-text {
+			position: absolute;
+			visibility: hidden;
+			top: 180px;
 		}
 	</style>
+	
+	<script type="text/javascript">
+		var calcLikeImgLeft = function() {
+			var content = document.getElementById("content");
+			var offsetLeft = content.offsetLeft;
+			var offsetWidth = content.offsetWidth;
+			var likeImgLeft = offsetLeft + offsetWidth - 180 + "px";
+			console.log("offsetLeft: " + offsetLeft + " offsetWidth: " + offsetWidth + " likeImgLeft: " + likeImgLeft);
+			
+			var likeArrow = document.getElementById("like-arrow");
+			likeArrow.style.left = likeImgLeft;
+			likeArrow.style.visibility = "visible";
+			
+			var likeText = document.getElementById("like-text");
+			likeText.style.left = parseInt(likeImgLeft, 10) + 20 + "px";
+			likeText.style.visibility = "visible";			
+		}
+		
+		window.onload = function() {
+			window.setTimeout(function() {
+				calcLikeImgLeft();
+			}, 100);
+		};
+
+		window.onresize = calcLikeImgLeft;
+	</script>
 	
 	<!-- 구글 +1 버튼 -->
 	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
@@ -150,7 +182,7 @@
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
-	</script>	
+	</script>
 </head>
 <body>
 	<div id="fb-root"></div>
@@ -165,7 +197,8 @@
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
 	
-	<img class="like-img" src="https://lh3.googleusercontent.com/-EElV3TKMHiw/TsnM6adMJSI/AAAAAAAADMs/24gfWazEUZs/s268/like.png" />
+	<img id="like-arrow" src="https://lh3.googleusercontent.com/-w2JqBLgDm6w/Tsno1r2nauI/AAAAAAAADM0/f7neawDkIQM/s119/like-arrow.png" />
+	<img id="like-text" src="https://lh4.googleusercontent.com/-sDLgjQ0XlMo/Tsno1jPUTVI/AAAAAAAADM4/1dXTJuhwsZk/s200/like-text.png" />
 	
 	<div id="content">
 		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
