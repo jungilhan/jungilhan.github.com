@@ -122,11 +122,16 @@
 			-moz-border-radius: 10px;		
 		}
 		
-		.like-buttons{
+		.like-buttons {
 			float: right;
 			padding-top: 6px;
 		}
 		
+		.like-img {
+			position: absolute;
+			top: 110px;
+			right: 190px;
+		}		
 	</style>
 	
 	<!-- 구글 +1 버튼 -->
@@ -159,7 +164,9 @@
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
-
+	
+	<img class="like-img" src="https://lh6.googleusercontent.com/-QFMhU6NSuA0/TsnHLKVED0I/AAAAAAAADMg/ttadWoo9Tdk/s367/like.png" />
+	
 	<div id="content">
 		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
 			<img class="icon" src="http://code.google.com/p/monkeylabs/logo?cct=1320242411" />
