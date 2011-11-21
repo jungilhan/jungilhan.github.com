@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="Description" content="KStock으로 코스피/코스닥 및 관심있는 주식(증권) 정보를 크롬 브라우저에서 실시간으로 확인하세요 :D" />
+	<meta name="keywords" content="KStock, 주식, 주식 시세, 코스피, 코스닥, 증권, 중권 시세" />
+	<title>KStock - Google Chrome Extension</title>
+	
+	<style type="text/css">
+		body, h1, h2, h3, h4, h5, h6, p, div, a, img {
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		body {
+			background-color: #494949;
+			font-family: "맑은 고딕", arial, sans-serif, gulim;
+			color: gray;
+		}
+		
+		#content {
+			margin: 30px auto;
+			padding: 20px;
+			width: 800px;
+			min-height: 400px;
+			background-color: white;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}	
+		
+		.title {
+			color: gray;
+			font-size: 3em;		
+			font-weight: bold;
+			vertical-align: text-bottom;			
+			padding-right: 10px;
+			display: inline-block;			
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.title-deco {
+			background-color: #FC575E;		
+			width: 10px;
+			height: 46px;			
+			margin-right: 10px;
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.desc {
+			margin: 10px 0px;
+			width: 630px;
+		}
+			
+		p {
+			color: #969696;
+		}	
+		
+		.icon {
+			float: right;
+		}
+		
+		.screenshot {
+			margin: 10px 0;
+		}
+		
+		#footer {
+			color: gray;
+			margin: 30px auto 0px auto;
+			text-align: center;
+		}
+		
+		a {
+			color: #FC575E;
+		}
+		
+		a img {
+			border: none;
+		}		
+
+		a:link {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:hover, a:visited:hover {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:active, a:visited:active {
+			color: #FC575E;
+			text-decoration:none;
+		}
+		
+		.separator-bar {
+			width: 98%;
+			margin-left: 1%;
+			border-top: 1px solid #C6C6C6;
+			border-bottom: 1px solid white;
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}
+
+		.unselectable {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		
+		h3 {
+			margin-top: 20px;
+		}
+
+		#download {
+			float: right;
+			padding: 10px 20px;
+			color: white;
+			font-weight: bold;
+			background-color:#66CC9A;
+			border: 1px solid white;
+			-webkit-border-radius: 10px;
+			-moz-border-radius: 10px;		
+		}
+		
+		.like-buttons {
+			float: right;
+			padding-top: 6px;
+		}
+		
+		#like-arrow {
+			position: absolute;
+			visibility: hidden;
+			top: 110px;
+		}
+		
+		#like-text {
+			position: absolute;
+			visibility: hidden;
+			top: 180px;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		var calcLikeImgLeft = function() {
+			var content = document.getElementById("content");
+			var offsetLeft = content.offsetLeft;
+			var offsetWidth = content.offsetWidth;
+			var likeImgLeft = offsetLeft + offsetWidth - 180 + "px";
+			console.log("offsetLeft: " + offsetLeft + " offsetWidth: " + offsetWidth + " likeImgLeft: " + likeImgLeft);
+			
+			var likeArrow = document.getElementById("like-arrow");
+			likeArrow.style.left = likeImgLeft;
+			likeArrow.style.visibility = "visible";
+			
+			var likeText = document.getElementById("like-text");
+			likeText.style.left = parseInt(likeImgLeft, 10) + 20 + "px";
+			likeText.style.visibility = "visible";			
+		}
+		
+		window.onload = function() {
+			window.setTimeout(function() {
+				calcLikeImgLeft();
+			}, 100);
+		};
+
+		window.onresize = calcLikeImgLeft;
+	</script>
+	
+	<!-- 구글 +1 버튼 -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+		{lang: 'ko'}
+	</script>
+	
+	<!-- 구글 analytics -->
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-21538497-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+<body>
+	<div id="fb-root"></div>
+	<script>
+		<!-- 페이스북 좋아요 버튼 -->
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	
+	<img id="like-arrow" src="https://lh3.googleusercontent.com/-w2JqBLgDm6w/Tsno1r2nauI/AAAAAAAADM0/f7neawDkIQM/s119/like-arrow.png" />
+	<img id="like-text" src="https://lh4.googleusercontent.com/-sDLgjQ0XlMo/Tsno1jPUTVI/AAAAAAAADM4/1dXTJuhwsZk/s200/like-text.png" />
+	
+	<div id="content">
+		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" src="http://code.google.com/p/monkeylabs/logo?cct=1320242411" />
+		</a>
+		
+		<div>
+			<div class="title-deco"></div>
+			<div class="title">KStock</div>
+			<div class="like-buttons">
+				<div style="margin-bottom: 4px;" class="fb-like" data-href="http://jungilhan.github.com/kstock/index.html" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></div>
+				<br/>
+				<g:plusone size="medium"></g:plusone>
+			</div>
+			<div class="separator-bar unselectable"></div>
+		</div>		
+		
+		<div id="download" style="cursor: pointer;" onclick="location.href='http://monkeylabs.googlecode.com/files/KStock-1.0.0.crx';">내려받기</div>
+		<h3>소개</h3>
+		<p class="desc">			
+			KStock은 구글 크롬 브라우저에서 동작하는 Chrome Extension 프로그램입니다. 코스피/코스닥 및 관심있는 증권(주식) 정보를 크롬 브라우저에서 실시간으로 확인하세요. <span style="color: #4EBAFF; font-weight: bold;">:)</span>
+		</p>
+	
+		<h3>기능</h3>
+		<p class="desc">		
+			다음 스크린샷에 보이는 것처럼 국내 지수 정보를 볼 수 있는 기능과 즐겨찾는 증권 정보를 등록해서 편리하게 볼 수 있는 기능을 제공합니다.
+		</p>
+		<strong>스크린샷 - 국내 지수 정보</strong><br/>
+		<img class="screenshot" src="https://lh6.googleusercontent.com/-O3UNyPlGHY0/TsJ0dB579XI/AAAAAAAADMI/9AY7DSjPaVI/s450/KStock%2525231.png" /><br/>
+		<strong>스크린샷 - 즐겨찾는 증권 정보</strong><br/>
+		<img class="screenshot" src="https://lh4.googleusercontent.com/-QAsBFbzaCjM/TsJ0dBZBm9I/AAAAAAAADME/b9GnswikVPk/s449/KStock%2525232.png" />
+	
+		<h3>설치</h3>
+		<p class="desc">
+			프로그램 설치 및 사용방법은 매우 간단합니다. 크롬 브라우저에서 오른쪽 상단에 보이는 내려받기 버튼을 클릭한 뒤, 설치가 완료되면 KStock 아이콘을 눌러 언제든지 증권 정보를 확인 할 수 있습니다. (크롬 브라우저에서만 설치가 됩니다 :D)
+		</p>
+		
+		<h3>삭제</h3>		
+		<p class="desc">
+			프로그램 삭제는 다음 그림과 같이 아이콘에 마우스 오른쪽 버튼을 클릭하고 <strong>'삭제'</strong>를 클릭하면 됩니다. 			
+		</p>
+		<img src="https://lh4.googleusercontent.com/-MSbHVHFei2g/TskKqYPhsjI/AAAAAAAADMY/kExSD0wq3i4/s223/KStock-Uninstall.png" />
+				
+		<h3>버전 정보</h3>
+		<ul>
+			<li>2011.11.20 - 버전 1.0.0</li>
+			<ul>
+				<li>최초 버전 릴리스</li>
+			</ul>
+		</ul>
+		
+		<div id="footer">
+			<h6>KStock은 오픈소스 프로그램입니다.<br /><a href="http://code.google.com/p/monkeylabs" onclick="window.open(this.href, '_blank'); return false;">Monkey Labs</a>에서 해당 정보를 얻을 수 있습니다.<br /></h6>
+		</div>
+	</div>
+</body>
+</html>
