@@ -188,6 +188,10 @@
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
 	</script>
+	
+	<!-- 댓글 플러그인 -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://www.livere.co.kr/ver5/livere.jsp" charset="utf-8" ></script>	
 </head>
 <body>
 	<div id="fb-root"></div>
@@ -243,7 +247,7 @@
 		
 		<h3>삭제</h3>		
 		<p class="desc">
-			프로그램 삭제는 다음 그림과 같이 아이콘에 마우스 오른쪽 버튼을 클릭하고 <strong>'삭제'</strong>를 클릭하면 됩니다. 			
+			프로그램 삭제는 다음 그림과 같이 아이콘에 마우스 오른쪽 버튼을 클릭하고 <strong>'제거'</strong>를 클릭하면 됩니다. 			
 		</p>
 		<img src="https://lh4.googleusercontent.com/-MSbHVHFei2g/TskKqYPhsjI/AAAAAAAADMY/kExSD0wq3i4/s223/KStock-Uninstall.png" />
 				
@@ -258,6 +262,14 @@
 		<div id="footer">
 			<h6>KStock은 오픈소스 프로그램입니다.<br /><a href="http://code.google.com/p/monkeylabs" onclick="window.open(this.href, '_blank'); return false;">Monkey Labs</a>에서 해당 정보를 얻을 수 있습니다.<br /></h6>
 		</div>
+		
+		<!-- 댓글 플러그인 -->
+		<div id="comment-container" style='width: 800px;'>
+			<script language="javascript">
+				livereReply = new Livere( "jungilhan.github.com/kstock/index.html" , "comment-container" , "" , "", "jungilhan", "default" , "openwhite" , 15);
+				livereReply.init();
+			</script>
+		</div>		
 	</div>
 </body>
 </html>
