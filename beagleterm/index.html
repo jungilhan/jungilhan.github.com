@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Description" content="Beagle Term은 크롬 확장 기술과 오픈소스 라이브러리를 사용해 크롬 브라우저 기반의 SSH 클라이언트를 만들기 위한 오픈소스 프로젝트입니다 :D" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Beagle Term - Google Developer Hackathon</title>
+	
+	<style type="text/css">
+		body, h1, h2, h3, h4, h5, h6, p, div, a, img {
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		body {
+			background-color: #494949;
+			font-family: "맑은 고딕", arial, sans-serif, gulim;
+			color: gray;
+		}
+		
+		#content {
+			margin: 30px auto;
+			padding: 20px;
+			width: 800px;
+			min-height: 400px;
+			background-color: white;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}	
+		
+		.title {
+			color: gray;
+			font-size: 3em;		
+			font-weight: bold;
+			vertical-align: text-bottom;			
+			padding-right: 10px;
+			display: inline-block;			
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.sub-title {
+			font-size: .8em;
+			color: #4EBAFF;
+			font-weight: bold;
+			padding-top: 3px;
+			padding-left: 30px;
+		}
+		
+		.title-deco {
+			background-color: #FC575E;		
+			width: 10px;
+			height: 46px;			
+			margin-right: 10px;
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.desc {
+			margin: 10px 0px;
+			width: 760px;
+			padding-left: 20px;
+		}
+			
+		p {
+			color: #969696;
+		}	
+		
+		.icon {
+			float: right;
+		}
+		
+		.screenshot {
+			margin: 10px 0;
+		}
+		
+		#footer {
+			color: gray;
+			margin: 30px auto 0px auto;
+			text-align: center;
+		}
+		
+		a {
+			color: #FC575E;
+		}
+		
+		a img {
+			border: none;
+		}		
+
+		a:link {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:hover, a:visited:hover {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:active, a:visited:active {
+			color: #FC575E;
+			text-decoration:none;
+		}
+		
+		.separator-bar {
+			width: 98%;
+			margin-left: 1%;
+			border-top: 1px solid #C6C6C6;
+			border-bottom: 1px solid white;
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}
+
+		.unselectable {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		
+		h3 {
+			margin-top: 20px;
+		}
+		
+		.sketch-container {
+			float: right;
+			padding: 2px;
+			padding-top: 6px;
+			margin: 15px 0px;
+			width: 804px;
+			height: 231px;
+			background-color: white;
+			text-align: center;
+			border: 1px solid gray;
+			-webkit-border-radius: 10px 10px 10px 10px;
+		}
+	</style>
+	
+	<script type="text/javascript">
+	</script>	
+</head>
+<body>
+	
+	<div id="content">
+		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" src="http://code.google.com/p/monkeylabs/logo?cct=1320242411" />
+		</a>
+	
+		<div>
+			<div class="title-deco"></div>
+			<div class="title">Beagle Term</div>			
+			<div class="sub-title">Google Chrome based SSH Terminal</div>
+			<div class="separator-bar unselectable"></div>
+		</div>
+		
+		<h3>소개</h3>
+		<p class="desc">
+			Beagle Term은 크롬 확장 기술과 오픈소스 라이브러리를 사용해 크롬 브라우저 기반의 SSH 클라이언트를 만들기 위한 프로젝트입니다.
+		</p>
+		
+		<div class="sketch-container">
+			<img src="https://lh5.googleusercontent.com/-wk_TS5hhxgs/Tt3-nzz43PI/AAAAAAAADag/QPCXd-yV-tk/s800/beagle-sketch-800x227.png" />
+		</div>	
+
+		<h3>해커톤에서의 목표</h3>
+		<ul>			
+			<li>오픈소스 라이브러리인 libssh를 이용해 NPAPI 플러그인 만들기</li>
+			<li>그럴싸한 터미널 갖추기</li>
+			<li>
+				크롬 확장 만들기
+				<ul>
+					<li>크롬 앱으로 패키징하기</li>
+					<li>URL 입력 창에 SSH 프로토콜 입력 시 터미널 동작시키기 - Omnibox? </li>
+				</ul>
+			</li>		
+			<li>간단한 위젯 만들기</li>
+			<li>많은 개발자 분들 만나기 :)</li>
+		</ul>
+
+		<h3>참여해주세요</h3>
+		<ul>
+			<li>Chrome Extensions</li>
+			<li>HTML5/CSS/Javascript</li>
+			<li>SSH</li>
+			<li>VT100 터미널 제어</li>
+			<li>C/C++</li>
+			<li>디자이너 분은 언제나 환영 :)</li>
+			<li>NaCl(미래의 작업 목록 참고)</li>
+			<li>GAE(미래의 작업 목록 참고)</li>
+		</ul>
+		
+		<h3>미래의 작업 목록</h3>
+		<ul>
+			<li>VT100 터미널 코드와 호환</li>
+			<li>NPAPI 플러그인을 크롬의 NaCl(Native Client)로 대체</li>			
+			<li>개인화 정보 서버와 연동하기 - 클라우드 - GAE 사용하면 될까요?</li>
+			<li>사용자 편의 기능 추가</li>
+			<li>다양한 위젯 추가</li>			
+		</ul>
+
+		<div id="footer">
+			<h6>Beagle Term은 오픈소스 프로젝트입니다<br><span style="color: #FC575E;">2011 Google Developer Hackathon</span></h6>			
+			
+		</div>
+	</div>
+</body>
+</html>
