@@ -129,8 +129,47 @@
 			background-color: white;
 			text-align: center;
 		}
+		
+		#like-arrow {
+			position: absolute;
+			visibility: hidden;
+			top: 80px;
+		}
+		
+		#like-text {
+			position: absolute;
+			visibility: hidden;
+			top: 150px;
+		}
 	</style>
 	
+	<script type="text/javascript">
+		var calcLikeImgLeft = function() {
+			var content = document.getElementById("content");
+			var offsetLeft = content.offsetLeft;
+			var offsetWidth = content.offsetWidth;
+			var likeImgLeft = offsetLeft + offsetWidth - 180 + "px";
+			console.log("offsetLeft: " + offsetLeft + " offsetWidth: " + offsetWidth + " likeImgLeft: " + likeImgLeft);
+			
+			var likeArrow = document.getElementById("like-arrow");
+			likeArrow.style.left = likeImgLeft;
+			likeArrow.style.visibility = "visible";
+			
+			var likeText = document.getElementById("like-text");
+			likeText.style.left = parseInt(likeImgLeft, 10) + 20 + "px";
+			likeText.style.visibility = "visible";			
+		}
+		
+		window.onload = function() {
+			window.setTimeout(function() {
+				calcLikeImgLeft();
+			}, 100);
+		};
+
+		window.onresize = calcLikeImgLeft;
+	</script>
+	
+	<!-- 댓글 플러그인 -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="http://www.livere.co.kr/ver5/livere.jsp" charset="utf-8" ></script>
 	
@@ -140,7 +179,11 @@
 	</script>
 </head>
 <body>
-	
+
+	<!-- '마음에 드시나요?' 이미지 -->
+	<img id="like-arrow" src="https://lh3.googleusercontent.com/-w2JqBLgDm6w/Tsno1r2nauI/AAAAAAAADM0/f7neawDkIQM/s119/like-arrow.png" />
+	<img id="like-text" src="https://lh4.googleusercontent.com/-sDLgjQ0XlMo/Tsno1jPUTVI/AAAAAAAADM4/1dXTJuhwsZk/s200/like-text.png" />
+			
 	<div id="content">
 		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
 			<img class="icon" src="https://lh6.googleusercontent.com/-VpvYIXzTs1U/T1Y8Ad-WncI/AAAAAAAADqg/lDpbD2Th6Z8/s64/monkeyhoykey-logo64x64.png" />
