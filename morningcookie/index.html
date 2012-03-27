@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Description" content="모닝 쿠키는 즐겨보는 뉴스, 날씨 정보, RSS 피드, Facebook 및 그 외 관심있는 정보를 알람으로 제공하는 오픈소스 프로젝트입니다. 일반적으로 알람 앱에서 많이 사용하는 음악이나 라디오가 아닌 매일 매일 새로운 정보들을 들으면서 하루를 시작해보는 것은 어떨까요? 다른 사람과 공유하고 싶은 정보가 있다면 '좋아요!' 라고 외쳐보세요." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>모닝 쿠키 -  소셜 기능을 활용한 TTS 알람</title>
+	
+	<style type="text/css">
+		body, h1, h2, h3, h4, h5, h6, p, div, a, img {
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		body {
+			background-color: #494949;
+			font-family: "맑은 고딕", arial, sans-serif, gulim;
+			color: gray;
+		}
+		
+		#content {
+			margin: 30px auto;
+			padding: 20px;
+			width: 800px;
+			min-height: 400px;
+			background-color: white;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}	
+		
+		.title {
+			color: gray;
+			font-size: 3em;		
+			font-weight: bold;
+			vertical-align: text-bottom;			
+			padding-right: 10px;
+			display: inline-block;			
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.sub-title {
+			font-size: .8em;
+			color: #4EBAFF;
+			font-weight: bold;
+			padding-top: 3px;
+			padding-left: 30px;
+		}
+		
+		.title-deco {
+			background-color: #FC575E;		
+			width: 10px;
+			height: 46px;			
+			margin-right: 10px;
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.desc {
+			margin: 10px 0px;
+			width: 760px;
+			padding-left: 20px;
+		}
+			
+		p {
+			color: #969696;
+		}	
+		
+		.icon {
+			float: right;
+			margin-left: 15px;
+		}
+		
+		.screenshot {
+			margin: 10px 0;
+		}
+		
+		#footer {
+			color: gray;
+			margin: 30px auto 0px auto;
+			text-align: center;
+		}
+		
+		a {
+			color: #FC575E;
+		}
+		
+		a img {
+			border: none;
+		}		
+
+		a:link {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:hover, a:visited:hover {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:active, a:visited:active {
+			color: #FC575E;
+			text-decoration:none;
+		}
+		
+		.separator-bar {
+			width: 98%;
+			margin-left: 1%;
+			border-top: 1px solid #C6C6C6;
+			border-bottom: 1px solid white;
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}
+
+		.unselectable {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		
+		h3 {
+			margin-top: 20px;
+		}
+		
+		.screenshot-container {
+			padding: 30px 0px;
+			background-color: white;
+			text-align: center;
+		}
+		
+		#like-arrow {
+			position: absolute;
+			visibility: hidden;
+			top: 90px;
+		}
+		
+		#like-text {
+			position: absolute;
+			visibility: hidden;
+			top: 150px;
+		}
+	</style>
+	
+	<script type="text/javascript">
+		var calcLikeImgLeft = function() {
+			var content = document.getElementById("content");
+			var offsetLeft = content.offsetLeft;
+			var offsetWidth = content.offsetWidth;
+			var likeImgLeft = offsetLeft + offsetWidth - 180 + "px";
+			console.log("offsetLeft: " + offsetLeft + " offsetWidth: " + offsetWidth + " likeImgLeft: " + likeImgLeft);
+			
+			var likeArrow = document.getElementById("like-arrow");
+			likeArrow.style.left = likeImgLeft;
+			likeArrow.style.visibility = "visible";
+			
+			var likeText = document.getElementById("like-text");
+			likeText.style.left = parseInt(likeImgLeft, 10) + 20 + "px";
+			likeText.style.visibility = "visible";			
+		}
+		
+		window.onload = function() {
+			window.setTimeout(function() {
+				calcLikeImgLeft();
+			}, 100);
+		};
+
+		window.onresize = calcLikeImgLeft;
+	</script>	
+</head>
+<body>
+
+	<div id="content">
+		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" width="64px" height="64px" src=https://lh4.googleusercontent.com/-xpgURMdcmdU/T1yS-p29pAI/AAAAAAAADus/yWMjiMzDPzk/s128/monkeyLabs128x128.png />
+		</a>
+		<a href="http://fsfe.org/campaigns/ilovefs/2012/ilovefs.html" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" width="12%" height="10%" src="http://fsfe.org/campaigns/valentine/fsfe_ilovefs_hashtag_small.png" />
+		</a>		
+	
+		<div>
+			<div class="title-deco"></div>
+			<div class="title">모닝 쿠키</div>			
+			<div class="sub-title">소셜 기능을 활용한 TTS 알람 - Prototype - 2012 Facebook Mobile Hack Seoul</div>
+			<div class="separator-bar unselectable"></div>
+		</div>
+		
+		<h3>소개</h3>
+		<p class="desc">
+			모닝 쿠키는 즐겨보는 뉴스, 날씨 정보, RSS 피드 그리고 SNS 및 그 외 관심있는 정보를 알람으로 제공하는 오픈소스 프로젝트입니다. 일반적으로 알람 앱에서 많이 사용하는 음악이나 라디오가 아닌 매일 매일 새로운 정보들을 들으면서 하루를 시작해보는 것은 어떨까요? 다른 사람과 공유하고 싶은 정보가 있다면 '좋아요!' 라고 외쳐보세요.
+		</p>
+		
+		<h3>기능</h3>
+		<ul>
+			<li>뉴스, 날씨, 즐겨찾는 RSS 피드를 TTS 엔진을 활용해 알람 제공</li>
+		</ul>
+
+		<h3>미래의 작업 목록</h3>
+		<ul>
+			<li>SNS 새소식 읽어오기</li>
+			<li>캘린더 정보 읽어오기</li>
+			<li>아이폰 버전 만들기</li>
+		</ul>
+		
+		<h3>소스 코드</h3>
+		<p class="desc">
+			모닝 쿠키는 오픈 소스 프로젝트입니다. 아래 코드 저장소를 방문하세요. :)
+		</p>
+		<ul>
+			<li><a href="https://github.com/jungilhan/MorningCookieHD">https://github.com/jungilhan/MorningCookieHD</a></li>
+		</ul>
+		
+		<div id="footer">
+			<h6>모닝 쿠키는 오픈소스 프로젝트입니다.<br /><a href="http://code.google.com/p/monkeylabs" onclick="window.open(this.href, '_blank'); return false;">Monkey Labs</a>에서 해당 정보를 얻을 수 있습니다.<br /><br /></h6>
+		</div>
+	</div>
+</body>
+</html>
