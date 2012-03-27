@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Description" content="The Monkey Log Viewer is free and open sourc project. It is designed to find information easily from the plain text file." />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Monkey Log Viwer - Make it easier to read log files</title>
+	
+	<!-- Google web fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+
+	<style type="text/css">
+		body, h1, h2, h3, h4, h5, h6, p, div, a, img {
+			padding: 0px;
+			margin: 0px;
+		}
+
+		body {
+			background-color: #494949;
+			font-family: 'Crete Round', serif;
+			color: gray;
+		}
+
+		#content {
+			margin: 30px auto;
+			padding: 20px;
+			width: 800px;
+			min-height: 400px;
+			background-color: white;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}	
+
+		.title {
+			color: gray;
+			font-size: 3em;		
+			font-weight: 300;
+			vertical-align: text-bottom;			
+			padding-right: 10px;
+			display: inline-block;			
+			text-shadow: 1px 1px 1px #ccc;
+			zoom: 1;
+			*display: inline;
+		}
+
+		.sub-title {
+			font-size: 1em;
+			color: #4EBAFF;
+			font-weight: 150;
+			padding-top: 3px;
+			padding-left: 30px;
+		}
+
+		.title-deco {
+			background-color: #FC575E;		
+			width: 10px;
+			height: 60px;
+			margin-right: 10px;
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+		}
+
+		.desc {
+			margin: 10px 0px;
+			width: 760px;
+			padding-left: 20px;
+		}
+
+		p {
+			color: #969696;
+		}	
+
+		.icon {
+			width: 80px;
+			height: 80px;
+			float: right;
+		}
+
+		.screenshot-thumbnail {
+			margin-right: 5px;
+			margin-bottom: 5px;
+			width: 45%;
+			height: 45%;
+		}
+
+		#footer {
+			color: gray;
+			margin: 30px auto 0px auto;
+			text-align: center;
+		}
+
+		a {
+			color: #FC575E;
+		}
+
+		a img {
+			border: none;
+		}		
+
+		a:link {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:hover, a:visited:hover {
+			color: #FC575E;
+			text-decoration: underline;
+		}
+
+		a:link:active, a:visited:active {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		.separator-bar {
+			width: 98%;
+			margin-left: 1%;
+			border-top: 1px solid #C6C6C6;
+			border-bottom: 1px solid white;
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}
+
+		.unselectable {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+
+		h3 {
+			margin-top: 20px;
+			font-size: 1.6em;
+			text-shadow: 1px 1px 1px #ccc;
+		}
+
+		.screenshot-container {
+			padding-top: 30px;
+			background-color: white;
+			text-align: center;
+		}
+		
+		#gallery {
+			margin: 0px;
+			padding: 0px;
+		}
+		
+		#gallery ul {
+			list-style: none;
+		}
+		
+		#gallery ul li {
+			display: inline;
+		}
+		
+		#gallery ul a:hover img {
+			border: 3px solid #4EBAFF;
+		}
+	</style>
+	
+	<!-- lightbox plugin -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.lightbox-0.5.pack.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="screen" />
+	
+	<!-- script section -->
+	<script type="text/javascript">
+		$(function() {
+			$('#gallery a').lightBox();
+		});
+	</script>
+
+	<!-- 구글 +1 버튼 -->
+	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+		{lang: 'ko'}
+	</script>
+</head>
+
+<body>
+	<div id="content">
+		<a href="http://code.google.com/p/monkeylogviewer/" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" src="https://lh5.googleusercontent.com/-7MSA1dnQYu4/Tso-wLOujkI/AAAAAAAADNE/vyrONEcG7M0/s100/MonkeyLogViewer-100x100.png" />
+		</a>
+
+		<div style="float: right;">
+			<g:plusone size="medium"></g:plusone>
+		</div>
+
+		<div>
+			<div class="title-deco"></div>
+			<div class="title">Monkey Log Viewer</div>			
+			<div class="sub-title">Make it easier to read log files</div>
+			<div class="separator-bar unselectable"></div>
+		</div>
+
+		<h3>Introduction</h3>
+		<p class="desc">
+			The Monkey Log Viewer is viewer for log files developed with Qt 4.7.0. It is designed to find information easily from the plain text file. You can fully customize the keyword highlighting and color scheme. This feature possible to quickly find interested keyword. It is a free and open source project. 
+		</p>
+
+		<h3>Demo Video</h3>
+		<div class="screenshot-container">
+			<object style="height: 390px; width: 640px"><param name="movie" value="http://www.youtube.com/v/YY23R3RmRz0?version=3&feature=player_detailpage"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="http://www.youtube.com/v/YY23R3RmRz0?version=3&feature=player_detailpage" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="360"></object>
+		</div>
+		
+		<h3>Features</h3>
+		<ul>
+			<li>Cross-platform. Runs on Linux, Windows, OS/2</li>
+			<li>Colorizing log lines</li>
+			<li>Export as HTML</li>
+			<li>Printing support</li>
+			<li>Multi-tab interface</li>
+			<li>Regular expression</li>
+			<li>Keyword search</li>
+			<li>Keyword statistics - create a chart base on total number of keywords in the log file</li>
+			<li>Zoom in / out</li>
+			<li>Drag & drop support</li>
+			<li>File browser</li>
+			<li>Unicode support</li>
+			<li>Recent files support</li>
+			<li>Jump to line</li>
+			<li>Line numbers</li>
+			<li>Update support - only available in Windows</li>
+		</ul>
+
+		<h3>Downloads</h3>
+		<p class="desc">The latest stable version of Monkey Log Viewer is 1.1.0</p>
+		<ul>
+			<li>Windows Installer - <a href="http://monkeylogviewer.googlecode.com/files/monkeyLogViewer-1.1.0.exe">monkeyLogViewer-1.1.0.exe</a></li>
+			<li>Windows Portable - <a href="http://monkeylogviewer.googlecode.com/files/monkeyLogViewer-1.1.0.zip">monkeyLogViewer-1.1.0.zip</a></li>
+			<li>Source - <a href="http://monkeylogviewer.googlecode.com/files/monkeyLogViewer-1.1.0.tar.gz">monkeyLogViewer-1.1.0.tar.gz</a> (required Qt 4.7 or higher version)</li>
+		</ul>
+
+		<h3>Screenshots</h3>
+		<p class="desc">Please click on image to enlarge.</p>
+		<div id="gallery" class="screenshot-container">
+			<ul>
+				<li>
+					<a href="https://lh6.googleusercontent.com/-LVRMU62RFa8/Td-elcd9G6I/AAAAAAAAAU0/zlZ1gC58Tnk/s640/monkeyLogViewer-1.1.0-%25231.png" title="Screenshot #1 - Monkey Log Viewer on Windows">
+						<img class="screenshot-thumbnail" src="https://lh6.googleusercontent.com/-LVRMU62RFa8/Td-elcd9G6I/AAAAAAAAAU0/zlZ1gC58Tnk/s640/monkeyLogViewer-1.1.0-%25231.png" alt="" />
+					</a>
+				</li>
+				<li>
+					<a href="https://lh6.googleusercontent.com/-2E8Gi5ghHsA/TY9QLrHsC1I/AAAAAAAAATM/iPCwwv7Qilk/s640/monkeyLogViewer-kubuntu-snapshot1.png" title="Screenshot #2 - Monkey Log Viewer on kubuntu">
+						<img class="screenshot-thumbnail" src="https://lh6.googleusercontent.com/-2E8Gi5ghHsA/TY9QLrHsC1I/AAAAAAAAATM/iPCwwv7Qilk/s640/monkeyLogViewer-kubuntu-snapshot1.png" alt="" />
+					</a>
+				</li>
+				<li>
+					<a href="https://lh3.googleusercontent.com/-ioq6q2XhmZs/TbuRUxm8tpI/AAAAAAAAAUI/_KrdP_a3xwY/s640/monkeyLogViewer-kubuntu-snapshot6.png" title="Screenshot #3 - Monkey Log Viewer on kubuntu">
+						<img class="screenshot-thumbnail" src="https://lh3.googleusercontent.com/-ioq6q2XhmZs/TbuRUxm8tpI/AAAAAAAAAUI/_KrdP_a3xwY/s640/monkeyLogViewer-kubuntu-snapshot6.png" alt="" />
+					</a>
+				</li>
+				<li>
+					<a href="https://lh4.googleusercontent.com/-6ZUNcpOzv0g/TZBnqMPDBDI/AAAAAAAAATM/TzyNotu0sXY/s640/monkeyLogViewer-kubuntu-snapshot2.png" title="Screenshot #4 - Monkey Log Viewer on kubuntu">
+						<img class="screenshot-thumbnail" src="https://lh4.googleusercontent.com/-6ZUNcpOzv0g/TZBnqMPDBDI/AAAAAAAAATM/TzyNotu0sXY/s640/monkeyLogViewer-kubuntu-snapshot2.png" alt="" />
+					</a>
+				</li>
+				<li>
+					<a href="https://lh3.googleusercontent.com/-nZDYUjXItt8/TZBn4mQ4v2I/AAAAAAAAATM/PeAqWkOl_xc/s640/monkeyLogViewer-kubuntu-snapshot3.png" title="Screenshot #5 - Monkey Log Viewer on kubuntu">
+						<img class="screenshot-thumbnail" src="https://lh3.googleusercontent.com/-nZDYUjXItt8/TZBn4mQ4v2I/AAAAAAAAATM/PeAqWkOl_xc/s640/monkeyLogViewer-kubuntu-snapshot3.png" alt="" />
+					</a>
+				</li>
+				<li>
+					<a href="https://lh4.googleusercontent.com/-8VoaBiXJ_5E/TbuRT5GZGeI/AAAAAAAAAUE/XyfhE378Is4/s912/monkeyLogViewer-kubuntu-snapshot5.png" title="Screenshot #6 - Monkey Log Viewer on kubuntu">
+						<img class="screenshot-thumbnail" src="https://lh4.googleusercontent.com/-8VoaBiXJ_5E/TbuRT5GZGeI/AAAAAAAAAUE/XyfhE378Is4/s912/monkeyLogViewer-kubuntu-snapshot5.png" alt="" />
+					</a>
+				</li>				
+				<li>
+					<a href="https://lh4.googleusercontent.com/-S_EwNtcjpsk/TWEna46fBGI/AAAAAAAAARE/sBn-hqHOCsM/s640/monkeyLogViewer%25231.png" title="Screenshot #6 - Monkey Log Viewer on Windows">
+						<img class="screenshot-thumbnail" src="https://lh4.googleusercontent.com/-S_EwNtcjpsk/TWEna46fBGI/AAAAAAAAARE/sBn-hqHOCsM/s640/monkeyLogViewer%25231.png" alt="" />
+					</a>
+				</li>
+				<li>
+					<a href="https://lh5.googleusercontent.com/-pj6dN_Tp-Ng/TeQ3hLRUC8I/AAAAAAAAAVM/zW5Mgn_RCB4/s912/monkeyLogViewer_OS2.jpg" title="Screenshot #7 - Monkey Log Viewer on OS/2">
+						<img class="screenshot-thumbnail" src="https://lh5.googleusercontent.com/-pj6dN_Tp-Ng/TeQ3hLRUC8I/AAAAAAAAAVM/zW5Mgn_RCB4/s912/monkeyLogViewer_OS2.jpg" alt="" />
+					</a>
+				</li>				
+			</ul>
+		</div>
+
+		<h3>Source code</h3>
+		<ul>
+			<li>
+				Please visit <a href="http://code.google.com/p/monkeylogviewer/">http://code.google.com/p/monkeylogviewer</a>, Sorry for this page most of the content was written in korean.
+			</li>
+		</ul>
+		
+		<h3>About me</h3>
+		<p class="desc">Hi, i'm Jungil Han, a software engineer from Seoul, Republic of Korea. Interested in Qt, Webkit, Linux, Android, and Hybrid app. I spend most of my spare time with programming. Some can be seen on YouTube or github. :D</p>
+		<ul>
+			<li>Beagle Term - Prototype - Chrome based SSH Terminal</li>
+			<ul>
+				<li>
+					<a href="http://www.youtube.com/watch?v=ZxP0ZcDqY-U&feature=player_embedded" onclick="window.open(this.href, '_blank'); return false;">
+						http://www.youtube.com/watch?v=ZxP0ZcDqY-U
+					</a>
+					
+				</li>
+			</ul>
+		</ul>
+		<ul>
+			<li>Monkey Hotkey - Simple hotkey launcher for Windows</li>
+			<ul>
+				<li>
+					<a href="http://www.youtube.com/watch?v=j6r6wE5z4fU&feature=player_embedded" onclick="window.open(this.href, '_blank'); return false;">
+						http://www.youtube.com/watch?v=j6r6wE5z4fU
+					</a>
+				</li>
+			</ul>	
+		</ul>
+		<ul>
+			<li>Monkey Log Viewer - Make it easier to read log files</li>			
+			<ul>
+				<li>
+					<a href="http://www.youtube.com/watch?v=YY23R3RmRz0&feature=player_embedded" onclick="window.open(this.href, '_blank'); return false;">
+						http://www.youtube.com/watch?v=YY23R3RmRz0
+					</a>
+				</li>
+			</ul>
+		</ul>
+		<ul>
+			<li>KStock - Chrome extension displays real-time stock prices and charts of 
+Republic of Korea</li>
+			<ul>
+				<li>
+					<a href="http://jungilhan.github.com/kstock/index.html" onclick="window.open(this.href, '_blank'); return false;">
+						http://jungilhan.github.com/kstock/index.html
+					</a>
+					(written in korean)
+				</li>
+			</ul>
+		</ul>
+		
+		<div id="footer">		
+			<h6>Contact <a href="mailto:jungil.han@gmail.com">Email me</a><br /><br /></h6>
+		</div>
+	</div>
+</body>
+</html>
