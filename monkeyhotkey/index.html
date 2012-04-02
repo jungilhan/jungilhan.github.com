@@ -141,6 +141,11 @@
 			visibility: hidden;
 			top: 150px;
 		}
+		
+		.like-buttons {
+			float: right;
+			padding-top: 6px;
+		}
 	</style>
 	
 	<script type="text/javascript">
@@ -179,6 +184,16 @@
 	</script>
 </head>
 <body>
+	<!-- 페이스북 좋아요 버튼 -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
 
 	<!-- '마음에 드시나요?' 이미지 -->
 	<img id="like-arrow" src="https://lh3.googleusercontent.com/-w2JqBLgDm6w/Tsno1r2nauI/AAAAAAAADM0/f7neawDkIQM/s119/like-arrow.png" />
@@ -189,13 +204,18 @@
 			<img class="icon" src="https://lh6.googleusercontent.com/-VpvYIXzTs1U/T1Y8Ad-WncI/AAAAAAAADqg/lDpbD2Th6Z8/s64/monkeyhoykey-logo64x64.png" />
 		</a>
 
-		<div style="float: right;"><g:plusone size="medium"></g:plusone></a>
+		<!--<div style="float: right;"><g:plusone size="medium"></g:plusone></a>-->
 	</div>		
 	
 		<div>
 			<div class="title-deco"></div>
 			<div class="title">몽키 핫키</div>			
 			<div class="sub-title">모두의 핫키 - Simple Hotkey Launcher for Windows</div>
+			<div class="like-buttons">
+				<div style="margin-bottom: 4px;" class="fb-like" data-href="http://jungilhan.github.com/monkeyhotkey/index.html" data-send="true" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></div>
+				<br/>
+				<g:plusone size="medium"></g:plusone>
+			</div>
 			<div class="separator-bar unselectable"></div>
 		</div>
 		
