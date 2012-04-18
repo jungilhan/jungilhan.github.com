@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Description" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Go 언어 성능 테스트</title>
+	
+	<style type="text/css">
+		body, h1, h2, h3, h4, h5, h6, p, div, a, img {
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		body {
+			background-color: #494949;
+			font-family: "맑은 고딕", arial, sans-serif, gulim;
+			color: gray;
+		}
+		
+		#content {
+			margin: 30px auto;
+			padding: 20px;
+			width: 800px;
+			min-height: 400px;
+			background-color: white;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}	
+		
+		.title {
+			color: gray;
+			font-size: 3em;
+			font-weight: bold;
+			vertical-align: text-bottom;
+			padding-right: 10px;
+			display: inline-block;	
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.sub-title {
+			font-size: .8em;
+			color: #4EBAFF;
+			font-weight: bold;
+			padding-top: 3px;
+			padding-left: 30px;
+		}
+		
+		.title-deco {
+			background-color: #FC575E;		
+			width: 10px;
+			height: 46px;			
+			margin-right: 10px;
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.desc {
+			margin: 10px 0px;
+			width: 760px;
+			padding-left: 20px;
+		}
+			
+		p {
+			color: #969696;
+		}	
+		
+		.icon {
+			float: right;
+			margin-left: 15px;
+		}
+		
+		.screenshot {
+			margin: 10px 0;
+		}
+		
+		#footer {
+			color: gray;
+			margin: 30px auto 0px auto;
+			text-align: center;
+		}
+		
+		a {
+			color: #FC575E;
+		}
+		
+		a img {
+			border: none;
+		}		
+
+		a:link {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:hover, a:visited:hover {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:active, a:visited:active {
+			color: #FC575E;
+			text-decoration:none;
+		}
+		
+		.separator-bar {
+			width: 98%;
+			margin-left: 1%;
+			border-top: 1px solid #C6C6C6;
+			border-bottom: 1px solid white;
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}
+
+		.unselectable {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		
+		h3 {
+			margin-top: 20px;
+		}
+		
+		.screenshot-container {
+			padding: 30px 0px;
+			background-color: white;
+			text-align: center;
+		}
+		
+	</style>
+	
+	<script type="text/javascript">
+    		var genRandomNum = function() {
+    			var range = document.getElementById('random-range').value;
+    			if (range.length > 0) {
+    				var array = new Array(parseInt(range));
+    				fillArray(array);
+    				document.getElementById('random-result').value = shuffle(array);
+    			}
+    		};
+
+		var fillArray = function(array) {
+			for (var i = 0; i < array.length; i++) 
+				array[i] = i;
+		};
+
+		var shuffle = function(array) {
+    			var tmp, current, top = array.length;
+
+    			if (top) while(--top) {
+        				current = Math.floor(Math.random() * (top + 1));
+        				tmp = array[current];
+        				array[current] = array[top];
+        				array[top] = tmp;
+    			}
+
+    			return array;
+    		};
+
+	</script>	
+</head>
+<body>
+
+	<div id="content">
+		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" width="64px" height="64px" src=https://lh4.googleusercontent.com/-xpgURMdcmdU/T1yS-p29pAI/AAAAAAAADus/yWMjiMzDPzk/s128/monkeyLabs128x128.png />
+		</a>
+		<a href="http://fsfe.org/campaigns/ilovefs/2012/ilovefs.html" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" width="12%" height="10%" src="http://fsfe.org/campaigns/valentine/fsfe_ilovefs_hashtag_small.png" />
+		</a>	
+	
+		<div>
+			<div class="title-deco"></div>
+			<div class="title">Go 언어 성능 테스트</div>
+			<div class="sub-title">Go 언어 사용자 모임</div>
+			<div class="separator-bar unselectable"></div>
+		</div>
+		
+		<h3>소개</h3>
+		<p class="desc">
+			Go 언어와 다른 프로그래밍 언어와의 성능을 테스트하고 비교하기 위한 페이지입니다.
+		</p>
+		<h3>빠른 정렬</h3>
+		<p class="desc">
+			정렬되지 않은 데이터 100,000개를 사용해서 테스트했습니다. 리눅스 쉘에서 time 명령어를 이용해서 측정한 데이터입니다.
+		</p>
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AmcYMGQwrwAUdE9wWGdyU0l2V3NoMEw4cC1LVmQ0dXc&transpose=0&headers=1&range=C3%3AF14&gid=0&pub=1","options":{"vAxes":[{"viewWindowMode":"pretty","viewWindow":{}},{"viewWindowMode":"pretty","viewWindow":{}}],"series":{"3":{},"2":{"hasAnnotations":true}},"useFormatFromData":true,"booleanRole":"certainty","animation":{"duration":500},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"emptyString","type":"string","sourceColumn":0},0,1,2,{"label":"","properties":{"role":"annotation"},"sourceColumn":3}]},"chartType":"AreaChart","chartName":"Chart 1"} </script>
+		
+		
+		<h3>삽입 정렬</h3>
+		<p class="desc">
+		</p>
+
+		<h3>쓰레드</h3>
+		<p class="desc">
+		</p>
+
+		<h3>테스트에 필요한 것들</h3>
+		<ul>
+			<li>
+				정렬에 사용할 데이터 얻기
+				 <input type='text' id='random-range' name='inputbox' size='12' placeholder='생성할 개수 입력 '> 
+				 <button type='button' onclick='genRandomNum()'>생성</button> 
+				 <br>
+				 <textarea id='random-result' rows='5' cols='70'>
+				 </textarea>
+
+			</li>
+		</ul>
+
+		<h3>참고자료</h3>
+		<ul>
+			<li><a href='http://ko.wikipedia.org/wiki/%ED%80%B5_%EC%A0%95%EB%A0%AC' onclick="window.open(this.href, '_blank'); return false;">빠른 정렬</a></li>
+			<li><a href='http://ko.wikipedia.org/wiki/%EC%82%BD%EC%9E%85_%EC%A0%95%EB%A0%AC' onclick="window.open(this.href, '_blank'); return false;">삽입 정렬</a></li>
+			<li><a href='http://shootout.alioth.debian.org/' onclick="window.open(this.href, '_blank'); return false;">The Computer Language Benchmarks Game</a></li>
+		</ul>
+
+		<div id="footer">
+			<h6>Go 언어를 배우고 있습니다.<br /><a href="http://code.google.com/p/monkeylabs" onclick="window.open(this.href, '_blank'); return false;">Monkey Labs</a>에서 해당 정보를 얻을 수 있습니다.<br /><br /></h6>
+		</div>
+	</div>
+</body>
+</html>
