@@ -134,14 +134,14 @@
 	</style>
 	
 	<script type="text/javascript">
-    		var genRandomNum = function() {
-    			var range = document.getElementById('random-range').value;
-    			if (range.length > 0) {
-    				var array = new Array(parseInt(range));
-    				fillArray(array);
-    				document.getElementById('random-result').value = shuffle(array);
-    			}
-    		};
+		var genRandomNum = function() {
+			var range = document.getElementById('random-range').value;
+			if (range.length > 0) {
+				var array = new Array(parseInt(range));
+				fillArray(array);
+				document.getElementById('random-result').value = shuffle(array);
+			}
+		};
 
 		var fillArray = function(array) {
 			for (var i = 0; i < array.length; i++) 
@@ -182,7 +182,7 @@
 		
 		<h3>소개</h3>
 		<p class="desc">
-			Go 언어와 다른 프로그래밍 언어와의 성능을 테스트하고 비교하기 위한 페이지입니다.
+			Go 언어와 다른 프로그래밍 언어와의 성능을 테스트하고 비교하기 위한 페이지입니다. 아직 Go 언어에 서툴러서 많은 자료를 만들지 못했습니다. 틈틈이 올릴께요. :D
 		</p>
 		<h3>빠른 정렬</h3>
 		<p class="desc">
@@ -207,9 +207,19 @@
 			<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AmcYMGQwrwAUdE9wWGdyU0l2V3NoMEw4cC1LVmQ0dXc&transpose=0&headers=1&range=C3%3AE14&gid=1&pub=1","options":{"vAxes":[{"title":"\uc2dc\uac04 (\ucd08)","viewWindowMode":"pretty","viewWindow":{}},{"viewWindowMode":"pretty","viewWindow":{}}],"title":"\uc0bd\uc785 \uc815\ub82c - \uc131\ub2a5 \uce21\uc815","useFormatFromData":true,"booleanRole":"certainty","animation":{"duration":500},"hAxis":{"title":"\ud69f\uc218"},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"emptyString","type":"string","sourceColumn":0},0,1,2]},"chartType":"AreaChart","chartName":"Chart 2"} </script>
 		</p>
 
+		<h3>선택 정렬</h3>
+		<p class="desc">
+			작업 중
+		</p>
+
+		<h3>힙 정렬</h3>
+		<p class="desc">
+			작업 중
+		</p>
+
 		<h3>쓰레드</h3>
 		<p class="desc">
-			쓰레드 부분은 아직 작업 중입니다 :)
+			작업 중
 		</p>
 
 		<h3>테스트에 필요한 것들</h3>
@@ -233,7 +243,7 @@
 		</ul>
 
 		<div id="footer">
-			<h6>Go 언어를 배우고 있습니다.<br /><a href="http://code.google.com/p/golang-korea/" onclick="window.open(this.href, '_blank'); return false;">golang-korea</a>에서 관련 정보를 얻을 수 있습니다.<br /><br /></h6>
+			<h6>Go 언어를 배우고 있습니다.<br /><a href="http://code.google.com/p/golang-korea/" onclick="window.open(this.href, '_blank'); return false;">golang-korea</a>에서 관련 정보를 얻으세요.<br /><br /></h6>
 		</div>
 	</div>
 </body>
