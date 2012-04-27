@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="Description" content="" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href='http://api.mobilis.co.kr/webfonts/css/?fontface=NanumGothicWeb' rel='stylesheet' type='text/css' />
+	<title>Gokonut - Editor for Go programming language</title>
+	
+	<style type="text/css">
+		body, h1, h2, h3, h4, h5, h6, p, div, a, img {
+			padding: 0px;
+			margin: 0px;
+		}
+		
+		body {
+			background-color: #494949;
+			font-family: 'NanumGothicWeb', arial, sans-serif, gulim;
+			color: gray;
+		}
+		
+		#content {
+			margin: 30px auto;
+			padding: 20px;
+			width: 800px;
+			min-height: 400px;
+			background-color: white;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+		}	
+		
+		.title {
+			color: gray;
+			font-size: 3em;
+			font-weight: bold;
+			vertical-align: text-bottom;
+			padding-right: 10px;
+			display: inline-block;	
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.sub-title {
+			font-size: .8em;
+			color: #4EBAFF;
+			font-weight: bold;
+			padding-top: 3px;
+			padding-left: 30px;
+		}
+		
+		.title-deco {
+			background-color: #FC575E;		
+			width: 10px;
+			height: 46px;			
+			margin-right: 10px;
+			display: inline-block;
+			zoom: 1;
+			*display: inline;
+		}
+		
+		.desc {
+			margin: 10px 0px;
+			width: 760px;
+			padding-left: 20px;
+		}
+			
+		p {
+			color: #969696;
+		}	
+		
+		.icon {
+			float: right;
+			margin-left: 15px;
+		}
+		
+		.screenshot {
+			margin: 10px 0;
+		}
+		
+		#footer {
+			color: gray;
+			margin: 30px auto 0px auto;
+			text-align: center;
+		}
+		
+		a {
+			color: #FC575E;
+		}
+		
+		a img {
+			border: none;
+		}		
+
+		a:link {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:hover, a:visited:hover {
+			color: #FC575E;
+			text-decoration:none;
+		}
+
+		a:link:active, a:visited:active {
+			color: #FC575E;
+			text-decoration:none;
+		}
+		
+		.separator-bar {
+			width: 98%;
+			margin-left: 1%;
+			border-top: 1px solid #C6C6C6;
+			border-bottom: 1px solid white;
+			margin-top: 6px;
+			margin-bottom: 6px;
+		}
+
+		.unselectable {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+		}
+		
+		h3 {
+			margin-top: 20px;
+		}
+		
+		.screenshot-container {
+			padding: 30px 0px;
+			background-color: white;
+			text-align: center;
+		}
+		
+	</style>
+	
+	<script type="text/javascript">
+	</script>	
+</head>
+<body>
+
+	<div id="content">
+		<a href="http://code.google.com/p/monkeylabs/" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" width="64px" height="64px" src=https://lh4.googleusercontent.com/-xpgURMdcmdU/T1yS-p29pAI/AAAAAAAADus/yWMjiMzDPzk/s128/monkeyLabs128x128.png />
+		</a>
+		<a href="http://fsfe.org/campaigns/ilovefs/2012/ilovefs.html" onclick="window.open(this.href, '_blank'); return false;">
+			<img class="icon" width="12%" height="10%" src="http://fsfe.org/campaigns/valentine/fsfe_ilovefs_hashtag_small.png" />
+		</a>	
+	
+		<div>
+			<div class="title-deco"></div>
+			<div class="title">Goconut</div>
+			<div class="sub-title">Editor for Go programming language</div>
+			<div class="separator-bar unselectable"></div>
+		</div>
+		
+		<h3>소개</h3>
+		<p class="desc">
+			Gokonut은 Go 프로그래밍 언어 편집기를 만들기 위한 프로젝트입니다. 기본적인 편집 기능, 구문 강조, 자동 완성, 빌드 및 실행이 가능한 편집기를 만드는 것이 최종 목표입니다. 2012 GDG 수원 안드로이드 해커톤에서는 안드로이드에서 동작하는 프로토타입 수준의 Go 언어 편집기를 만들어 볼 계획입니다.
+			<div class=".screenshot-container">
+				<img src="https://lh6.googleusercontent.com/-IbAk-Rz85J8/T5pSn7wcnKI/AAAAAAAAEas/gMw9-gdLw90/s800/goconut.png" />
+			</div>
+		</p>
+		
+		<h3>2012 GDG 수원 안드로이드 해커톤에서의 목표</h3>
+		<p class="desc">
+			<ul>
+				<li>기본적인 편집 기능</li>
+				<li>구문 강조 (Syntax highlighting)</li>
+				<li>빌드 & 실행</li>
+				<li>안드로이드 기기에서 작성한 소스 코드를 클라우드 저장소에 저장하기</li>
+			</ul>
+		</p>
+		
+		<h3>참여해주세요</h3>
+		<p class="desc">
+			<ul>
+				<li>Dropbox, Github에 소스 코드 저장하기</li>
+			</ul>
+		</p>		
+		
+		<div id="footer">
+			<h6>Gokonut은 오픈소스 프로젝트입니다.<br /><a href="http://gdg-suwon.blogspot.com/2012/04/2012-gdg-suwon-android-hackathon.html" onclick="window.open(this.href, '_blank'); return false;">GDG Suwon</a>에서 관련 정보를 얻으세요.<br /><br /></h6>
+		</div>
+	</div>
+</body>
+</html>
