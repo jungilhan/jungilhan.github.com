@@ -144,6 +144,15 @@
 			}
 		};
 
+		var genOrderNum = function() {
+  			var range = document.getElementById('order-range').value;
+  			if (range.length > 0) {
+  				var array = new Array(parseInt(range));
+  				fillArray(array);
+  				document.getElementById('order-result').value = array;
+  			}
+  		};
+  		
 		var fillArray = function(array) {
 			for (var i = 0; i < array.length; i++) 
 				array[i] = i;
@@ -245,6 +254,15 @@
 			준비 중
 		</p>
 
+		<h3>이진 검색 - 재귀 함수 사용</h3>
+		<p class="desc">
+			<ul>
+				<li>정렬된 정수 100,000개에서 정수 99999를 검색</li>
+				<h6 style='color: #44AA79; font-weight: bold;'>* Go 평균 0.032초, CO0 평균 0.0352초, CO3 평균 0.0324초</h6>
+			</ul>
+			<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AmcYMGQwrwAUdE9wWGdyU0l2V3NoMEw4cC1LVmQ0dXc&transpose=0&headers=1&range=C3%3AF13&gid=5&pub=1","options":{"vAxes":[{"title":"\uc2dc\uac04 (\ucd08)","useFormatFromData":false,"minorGridlines":{"count":"0"},"formatOptions":{"source":"inline","scaleFactor":null},"minValue":null,"viewWindowMode":"pretty","format":"0.##","gridlines":{"count":"10"},"logScale":false,"viewWindow":{"min":null}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"\uc774\uc9c4 \uac80\uc0c9 - \uc7ac\uadc0 - \uc131\ub2a5 \uce21\uc815 ","booleanRole":"certainty","animation":{"duration":500},"domainAxis":{"direction":1},"legend":"right","hAxis":{"title":"\ud69f\uc218","useFormatFromData":true},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"emptyString","type":"string","sourceColumn":0},0,1,2,3]},"chartType":"AreaChart","chartName":"Chart 3"} </script>
+		</p>
+		
 		<h3>쓰레드 성능 비교</h3>
 		<p class="desc">
 			준비 중
@@ -253,14 +271,24 @@
 		<h3>테스트에 필요한 것들</h3>
 		<ul>
 			<li>
-				정렬에 사용할 데이터 얻기
+				정렬에 사용할 데이터 얻기 - 정렬되지 않은 정수의 집합을 생성합니다.
 				 <input type='text' id='random-range' name='inputbox' size='14' placeholder='생성할 개수 입력 '> 
 				 <button type='button' onclick='genRandomNum()'>생성</button> 
 				 <br>
 				 <h6 style='color: #44AA79; font-weight: bold;'>* 100,000개 이상은 생성하지 않기를 권장합니다 :D</h6>
 				 <textarea id='random-result' rows='5' cols='70'>
 				 </textarea>
-
+			</li>
+		</ul>
+		<ul>
+			<li>
+				검색에 사용할 데이터 얻기 - 정렬된 정수의 집합을 생성합니다.
+				 <input type='text' id='order-range' name='inputbox' size='14' placeholder='생성할 개수 입력 '> 
+				 <button type='button' onclick='genOrderNum()'>생성</button> 
+				 <br>
+				 <h6 style='color: #44AA79; font-weight: bold;'>* 100,000개 이상은 생성하지 않기를 권장합니다 :D</h6>
+				 <textarea id='order-result' rows='5' cols='70'>
+				 </textarea>
 			</li>
 		</ul>
 
