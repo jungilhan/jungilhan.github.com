@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Monkey Log Viewer</title>
+
+		<meta name="description" content="Make it easier to read log files">
+		<meta name="author" content="Jungil Han">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-wefb-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h2>몽키 로그 뷰어</h2>					
+					<h4>Make it easier to read log files</h4>
+					<p>
+						<small>프로젝트 소개 페이지는<a href="http://jungilhan.github.com/monkeylogviewer/index.html">Github</a>을 방문해주세요!</small>	
+					</p>
+					<img style="border: 4px solid #444; border-radius: 10px;" src="https://lh5.googleusercontent.com/-7MSA1dnQYu4/Tso-wLOujkI/AAAAAAAADNE/vyrONEcG7M0/s100/MonkeyLogViewer-100x100.png"/>
+				</section>
+				<section>
+					<section>
+						<h2>로그를 대하는 자세</h2>
+						<p>
+						</p>
+					</section>
+					<section>
+						<h2>텍스트 편집기?</h2>
+						<p>VIM, Sublime Text, Note Pad, AcroEditor와 같은 <br>손에 익은 텍스트 편집기 활용하기</p>
+					</section>
+					<section>
+						<h2>커맨드 라인 도구가 최고?</h2>
+						<p>커맨드 라인에 익숙하다면 grep, find, awk와 같은 도구와 <br>정규표현식의 조합으로 분석</p>
+					</section>
+				</section>
+
+				<section>
+					<section data-state="purple">
+						<h2>생산성의 변화를 모색</h2>
+						<p>
+							좀 더 나이스한 방법이 있을거야?!
+						</p>
+					</section>
+				</section>
+
+				<section>
+						<h2>현실과 이상 사이에서</h2>
+						<p>
+							<img style="border: 6px solid white; border-radius: 10px;" src="http://pds3.egloos.com/pds/200612/10/20/c0072420_0512367.png" />
+							<br>
+							크로스 플랫폼?, 유니코드 지원?, 무료?
+							<br>쉬운 사용법?, 사용자 설정 지원?
+						</p>
+				</section>
+
+				<section>
+					<section data-state="blue">
+						<h2>그래 난 개발자니까?!</h2>
+						<p>Let's Make!</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>그럼 적절한 도구의 기준은?</h2>
+					<ul>
+						<li>내가 원하는 정보를 빠르게 찾을 수 있는지</li>
+						<li>로그 뷰어가 없는 유저에게도 시각화 된 로그 보여주기</li>
+						<li>크로스 플랫폼 지원은 보너스</li>
+						<li>일반적으로 사용자가 기대하는 기능은 모두 제공</li>
+					</ul>
+				</section>
+
+				<section>
+						<h2>몽키 로그 뷰어 탄생</h2>
+						<p>
+							<img style="border: 6px solid #DDD; border-radius: 10px; margin: 0; padding: 0;" src="https://lh6.googleusercontent.com/-LVRMU62RFa8/Td-elcd9G6I/AAAAAAAAAU0/zlZ1gC58Tnk/s640/monkeyLogViewer-1.1.0-%25231.png" width="35%" />
+							<img style="border: 6px solid #DDD; border-radius: 10px; margin: 0; padding: 0;" src="https://lh3.googleusercontent.com/-ioq6q2XhmZs/TbuRUxm8tpI/AAAAAAAAAUI/_KrdP_a3xwY/s640/monkeyLogViewer-kubuntu-snapshot6.png" width="35%" />
+							<img style="border: 6px solid #DDD; border-radius: 10px; margin: 0; padding: 0;" src="https://lh4.googleusercontent.com/-6ZUNcpOzv0g/TZBnqMPDBDI/AAAAAAAAATM/TzyNotu0sXY/s640/monkeyLogViewer-kubuntu-snapshot2.png" width="35%" />
+							<img style="border: 6px solid #DDD; border-radius: 10px; margin: 0; padding: 0;" src="https://lh4.googleusercontent.com/-8VoaBiXJ_5E/TbuRT5GZGeI/AAAAAAAAAUE/XyfhE378Is4/s912/monkeyLogViewer-kubuntu-snapshot5.png" width="35%" />						
+						</p>
+				</section>
+
+				<section>
+					<section data-state="orange">
+						<h2>시연</h2>
+						<iframe width="640" height="360" src="http://www.youtube.com/embed/KQiBtFRw-KI?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+					</section>
+				</section>
+
+				<section>
+					<h2>발자취 살펴보기</h2>
+					<ul>
+						<li>네 번의 정식 릴리즈</li>
+						<li>OS/2 포팅 - Elbert Pol - <a href="http://code.google.com/p/monkeylogviewer/downloads/detail?name=monkeyLogViewer-1.1.0-os2.zip&can=2&q=#makechanges">관련 로그</a></li>
+						<li>Win7/msvc2008 빌드 에러 패치 - Giuseppe Corbelli - <a href="http://code.google.com/p/monkeylogviewer/issues/detail?id=75">관련 로그</a></li>
+						<li>노키아에서 진행 중인 QtonPi(Qt on Raspberry Pi Device Program) 프로젝트로 선정, 전세계 400명 중 1명의 개발자로 참여 - <a href="http://qt-project.org/wiki/QtonPi-Accepted">관련 페이지</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>프로젝트의 방향</h2>
+					<ul>
+						<li>Mac OS 지원</li>
+						<li>Raspberry Pi 보드 지원</li>
+						<li>KDE, GNOME과 같은 리눅스 데스크톱 프로젝트 참여</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>감사합니다</h2>
+					<ul>
+						<li>코드 저장소</li>
+						<ul>
+							<li>Google Code - <a href=">http://goo.gl/pkerk">http://goo.gl/pkerk</a></li>
+							<li>Github - <a href="http://goo.gl/UHzbr">http://goo.gl/UHzbr</a></li>
+						</ul>
+						<li>시연 영상</li>
+						<ul>
+							<li><a href="http://www.youtube.com/watch?feature=player_embedded&v=YY23R3RmRz0">Youtube</a></li>
+						</ul>
+						<li>개발자</li>
+						<ul>
+							<li>한정일 - <a href="#">jungil.han@gmail.com</a></li>
+						</ul>
+					</ul>	
+					<p style="font-size: 0.5em; float: right;">
+						<br>
+						<br>
+						이 프리젠테이션은 <a href="https://github.com/hakimel/reveal.js/">relveal.js</a>를 기반으로 만들어졌습니다.
+					</p>				
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
