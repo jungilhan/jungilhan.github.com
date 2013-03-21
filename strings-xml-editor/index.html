@@ -14,8 +14,8 @@
           <div class="container">
             <a href="https://github.com/jungilhan/strings-xml-editor"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
             <a class="brand" href="#">비-개발자를 위한 strings.xml 편집기<span id='beta-label' class="label">Beta</span></a>
-            <button id='export-xlsx' type="button" class="btn btn-success pull-right">Export to strings.xlsx</button>
-            <button id='export-xml' type="button" class="btn btn-success pull-right">Export to strings.xml</button>
+            <button id='export-xlsx' type="button" class="btn btn-success pull-right">Export to XLSX</button>
+            <button id='export-xml' type="button" class="btn btn-success pull-right">Export to XML</button>
           </div> <!-- container -->
         </div> <!-- navbar-inner -->    
         </div> <!-- navbar -->      
@@ -88,40 +88,61 @@
 
                 // string 태그 파싱
                 var string = { names: [], values: [] };
-                var length = jsonObj.resources.string.length;
-                for (var i = 0; i < length; i++) {
-                  var name = jsonObj.resources.string[i]._name;
-                  var value = jsonObj.resources.string[i].toString();
 
-                  if (jsonObj.resources.string[i].hasOwnProperty('g')) {
-                    var $xmlDoc = $(this.result);
-                    value = $xmlDoc.find('string').get(i).innerHTML;
+                if (jsonObj.resources.string.hasOwnProperty('length')) {
+                  var length = jsonObj.resources.string.length;
+                  for (var i = 0; i < length; i++) {
+                    var name = jsonObj.resources.string[i]._name;
+                    var value = jsonObj.resources.string[i].toString();
 
-                  } else if (jsonObj.resources.string[i].hasOwnProperty('__cdata')) {
-                    value = '\<\!\[CDATA[' + value + ']]>';
+                    if (jsonObj.resources.string[i].hasOwnProperty('g')) {
+                      var $xmlDoc = $(this.result);
+                      value = $xmlDoc.find('string').get(i).innerHTML;
+
+                    } else if (jsonObj.resources.string[i].hasOwnProperty('__cdata')) {
+                      value = '\<\!\[CDATA[' + value + ']]>';
+                    }
+
+                    // Value가 비어있을 때를 의미
+                    if (value == '[object Object]') {
+                     value = '';
+                    }
+
+                    string.names.push(name);
+                    string.values.push(value);
                   }
 
+                } else {
+                  var name = jsonObj.resources.string._name;
+                  var value = jsonObj.resources.string.toString();
+                  if (value == '[object Object]') {
+                    value = '';
+                  }
+                
                   string.names.push(name);
                   string.values.push(value);
                 }
 
+
                 // string-array 태그 파싱
                 var stringArrays = [];                
-                if (jsonObj.resources['string-array'].hasOwnProperty('length')) {
-                  length = jsonObj.resources['string-array'].length;
-                  for (var i = 0; i < length; i++) {
+                if (jsonObj.resources['string-array'] !== undefined) {
+                    if (jsonObj.resources['string-array'].hasOwnProperty('length')) {
+                    length = jsonObj.resources['string-array'].length;
+                    for (var i = 0; i < length; i++) {
+                      var stringArray = { name: '', items: [] };
+
+                      stringArray.name = jsonObj.resources['string-array'][i]._name;
+                      stringArray.items = jsonObj.resources['string-array'][i].item_asArray;
+                      stringArrays.push(stringArray);
+                    }
+                  } else {
                     var stringArray = { name: '', items: [] };
 
-                    stringArray.name = jsonObj.resources['string-array'][i]._name;
-                    stringArray.items = jsonObj.resources['string-array'][i].item_asArray;
+                    stringArray.name = jsonObj.resources['string-array']._name;
+                    stringArray.items = jsonObj.resources['string-array'].item_asArray;
                     stringArrays.push(stringArray);
                   }
-                } else {
-                  var stringArray = { name: '', items: [] };
-
-                  stringArray.name = jsonObj.resources['string-array']._name;
-                  stringArray.items = jsonObj.resources['string-array'].item_asArray;
-                  stringArrays.push(stringArray);
                 }
                 
                 // 화면 출력
@@ -141,6 +162,10 @@
                 }
 
                 for (var i = 0; i < stringArrays.length; i++) {
+                  if (stringArrays[i].items === undefined) {
+                    break;
+                  }
+
                   for (var j = 0; j < stringArrays[i].items.length; j++) {
                     var $tr = $("<tr></tr>");
                     var $index = $("<td></td>").text(++count);
