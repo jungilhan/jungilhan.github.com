@@ -92,10 +92,9 @@
         $('#sample').bind('click', function() {
           $.ajax({
             url: 'http://jungilhan.github.com/strings-xml-editor/sample-strings.xml',
-            dataType: 'text',
+            dataType: 'xml',
             encoding: 'UTF-8',
             success: function(xml) {
-              console.log(xml);
               parseXmlAndRender('sample-strings.xml', xml);
             }
           });
@@ -105,8 +104,7 @@
           $('#tab .name').text(name);
 
           var xml2js = new X2JS();
-          var jsonObj = xml2js.xml_str2json(uncomment(xml));
-		console.log(uncomment(xml));
+          var jsonObj = xml2js.xml2json(uncomment(xml));
 
           // string 태그 파싱
           var string = { names: [], values: [] };
