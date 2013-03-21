@@ -106,6 +106,7 @@
 
           var xml2js = new X2JS();
           var jsonObj = xml2js.xml_str2json(uncomment(xml));
+		console.log(uncomment(xml));
 
           // string 태그 파싱
           var string = { names: [], values: [] };
