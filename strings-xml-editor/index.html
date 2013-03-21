@@ -92,11 +92,11 @@
         $('#sample').bind('click', function() {
           $.ajax({
             url: 'http://jungilhan.github.com/strings-xml-editor/sample-strings.xml',
-            dataType: 'xml',
+            dataType: 'text',
             encoding: 'UTF-8',
             success: function(xml) {
               console.log(xml);
-              parseXmlAndRender('sample-strings.xml', xml.toString());
+              parseXmlAndRender('sample-strings.xml', xml);
             }
           });
         });
