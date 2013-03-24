@@ -146,9 +146,6 @@ function xlsx(file) { 'use strict'; // v2.2.0
 							}
 							else if (typeof val === 'boolean') { val = (val ? 1 : 0); t = 'b'; }
 							else if (typeOf(val) === 'date') { val = convertDate(val); style = style || 'mm-dd-yy'; }
-							else {
-								console.log('isFinite(val): ' + isFinite(val) + ', val: ' + val + ", length: " + val.length);
-							}
 							if (style) {
 								index = styles.indexOf(style);
 								if (index < 0) { style = styles.push(style) - 1; }
@@ -227,8 +224,6 @@ function xlsx(file) { 'use strict'; // v2.2.0
 					+ worksheets.join('') + '</sheets><calcPr calcId="145621"/></workbook>');
 			//}
 		//}
-
-		console.log(sharedStrings);
 		processTime = Date.now() - processTime;
 		zipTime = Date.now();
 		result = {
