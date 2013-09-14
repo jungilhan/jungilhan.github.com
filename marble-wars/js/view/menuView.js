@@ -236,7 +236,7 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       strokeColor: 'white',
       strokeWidth: 1,
       radius : 8,
-      visible: true
+      visible: false
     }).addTo(layer);
 
     var playerInfo = Player.name() + '\n' + Player.profileUrl() + '\n' + Player.userId();
