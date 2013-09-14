@@ -1,8 +1,11 @@
-define(['view/introView'], function(Intro) {
+define(['view/introView', 'controller/login'], function(Intro, Login) {
   /** 
    * 인트로 시작 함수.
    */
   function start() {
+    // 구글+ 로그인
+    Login.silent();
+
     Intro.render(oncomplete_);
   }
 

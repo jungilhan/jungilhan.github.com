@@ -3,11 +3,6 @@ define(['constants'/*, 'lib/google-game-api/gapi-chrome-apps'*/], function(Const
   var loggedIn_ = false;
   var scopes_ = 'https://www.googleapis.com/auth/games';
 
-  function init() {
-    // Need to add this 1 ms timeout to work around an odd but annoying bug
-    window.setTimeout(trySilentAuth_, 1);
-  }
-
   function loadClient_() {
     // Load up /games/v1
     gapi.client.load('games','v1',function(response) {
@@ -29,23 +24,26 @@ define(['constants'/*, 'lib/google-game-api/gapi-chrome-apps'*/], function(Const
     console.log('We are in handle auth result');
     if (auth) {
       console.log('Hooray! You\'re logged in!');
-      loadClient();
+      loadClient_();
 
     } else {
       console.log('Please login!');
     }
   }
 
-  function trySilentAuth_() {
+  function silent() {
     console.log('Trying silent auth');
-    gapi.auth.authorize({client_id: Constants.clientId(), scope: scopes_, immediate: true}, handleAuthResult_);
+    window.setTimeout(function() {
+      gapi.auth.authorize({client_id: Constants.clientId(), scope: scopes_, immediate: true}, handleAuthResult_);
+    }, 1);  
   }
 
-  function showLoginDialog_() {
-    gapi.auth.authorize({client_id: Constants.cleintId(), scope: scopes_, immediate: false}, handleAuthResult_);
+  function showDialog() {
+    gapi.auth.authorize({client_id: Constants.clientId(), scope: scopes_, immediate: false}, handleAuthResult_);
   }
 
   return {
-  	init: init
+    showDialog: showDialog,
+    silent: silent
   };
 });
