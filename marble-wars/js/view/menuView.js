@@ -239,12 +239,13 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       visible: true
     }).addTo(layer);
 
+    var playerInfo = player.name + '\n' + player.profileUrl + '\n' + player.userId;
     var debugText = new collie.Text({
       x : 10,
       y : 10,
       fontColor : 'white',
       fontSize: 14      
-    }).text(Player.name() == '' ? 'Please login' : Player.name()).addTo(debug);
+    }).text(Player.name() == '' ? 'Please login' : playerInfo).addTo(debug);
 
     debug.set({
       text: debugText
