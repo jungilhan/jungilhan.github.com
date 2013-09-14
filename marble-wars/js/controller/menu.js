@@ -103,8 +103,8 @@ define(['view/menuView', 'controller/stage', 'controller/audio', 'model/effects'
   /** 
    * 로그인 콜백 함수.
    */
-  function onlogin_() {
-    Login.showDialog();
+  function onlogin_(oncompleted) {
+    Login.showDialog(oncompleted);
   }
 
   return {
