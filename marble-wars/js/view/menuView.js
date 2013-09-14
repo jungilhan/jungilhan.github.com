@@ -239,7 +239,7 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       visible: true
     }).addTo(layer);
 
-    var playerInfo = player.name + '\n' + player.profileUrl + '\n' + player.userId;
+    var playerInfo = Player.name() + '\n' + Player.profileUrl() + '\n' + Player.userId();
     var debugText = new collie.Text({
       x : 10,
       y : 10,
