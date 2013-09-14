@@ -1,10 +1,10 @@
 define([], function() {    
   function clientId() {
-    return '675059523914.apps.googleusercontent.com';
+    return '919526194959.apps.googleusercontent.com';
   }
 
   function appId() {
-    return '675059523914';
+    return '919526194959';
   }
 
   return {
