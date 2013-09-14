@@ -243,8 +243,10 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
     var debugText = new collie.Text({
       x : 10,
       y : 10,
+      width: 760,
+      height: 70,
       fontColor : 'white',
-      fontSize: 14      
+      fontSize: 14
     }).text(Player.name() == '' ? 'Please login' : playerInfo).addTo(debug);
 
     debug.set({

@@ -1,8 +1,11 @@
-define(['controller/intro', 'controller/audio', 'jquery', 'lib/collie'], function(Intro, Audio, $) {
+define(['controller/intro', 'controller/audio', 'controller/login', 'jquery', 'lib/collie'], function(Intro, Audio, Login, $) {
   /** 
    * Application 시작 함수.
    */
-  function start() {    
+  function start() {   
+    // 구글+ 로그인
+    Login.silent();
+
     prepareResource_();
   }
 
