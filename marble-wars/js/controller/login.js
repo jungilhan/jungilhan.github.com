@@ -7,7 +7,7 @@ define(['constants', 'controller/player'], function(Constants, Player) {
   function loadClient_() {
     // Load up /games/v1
     gapi.client.load('games','v1',function(response) {
-      console.log('games:' + response);
+      console.log('games: ' + response);
       Player.load();
     });
 

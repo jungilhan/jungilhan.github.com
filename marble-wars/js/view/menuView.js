@@ -337,7 +337,7 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
           callbacks_.onlogin(function(player) {
             console.log('login callback called!');
             displayObjects.debug.get('text').set({
-              text: player.name() + ' ' + player.profileUrl() + ' ' + player.userId()
+              text: player.name + '\n' + player.profileUrl + '\n' + player.userId
             });
           });
         }
