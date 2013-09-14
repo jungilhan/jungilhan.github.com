@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=990, initial-scale=1.0, maximum-scale=1.0, minimum-scale=0.1, user-scalable=yes'/>
+    <title>The Marble Wars</title>    
+    <link href='css/bootstrap.css' rel='stylesheet'>
+    <link href='css/style.css' rel='stylesheet'>
+  </head>
+  
+  <body>
+    <div class='container'>
+      <div id='wrap'>
+        <div id='loading'>
+          <img src='img/loading.gif'/>
+          <span>NOW LOADING...</span> 
+        </div>        
+        <div class='canvas-wrap'>                  
+          <div id='intro'></div>
+          <div id='menu'></div>
+          <div id='stage'></div>
+          <div id='game'></div>
+        </div>
+      </div>
+      <footer>
+        <div id='market-banner' class='pull-left'>          
+           <a href='https://itunes.apple.com/app/id601919795?mt=8' target="_blank"><img src='img/appstore.png' style='height: 60px;'/></a>
+          <!--<img src='img/market.png' style='height: 60px;'/>
+          <p>* The Mobile version will be available soon!</p>-->
+        </div>
+        <p class='pull-right'>&copy; BULGOGI STUDIO 2013</p>
+      </footer>
+    </div>
+
+    <script data-main='js/app' src='js/require-jquery.js'></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38349630-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
