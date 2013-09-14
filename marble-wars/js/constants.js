@@ -7,8 +7,13 @@ define([], function() {
     return '919526194959';
   }
 
+  function linkPageBase() {
+    return 'http://jungilhan.github.io/marble-wars/index.html';
+  }
+
   return {
     clientId: clientId,
-    appId: appId
+    appId: appId,
+    linkPageBase: linkPageBase
   };
 });

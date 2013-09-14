@@ -515,8 +515,7 @@ define(['config', 'lib/collie'], function(Config) {
     displayObjects.brag.attach({
       click: function(e) {
         if (callbacks_ != null && callbacks_.onbrag != null) {
-          var challenge = callbacks_.onbrag(params.mode, params.stage);
-          console.log(challenge);
+          callbacks_.onbrag(params.mode, params.stage);
         }
       }
     });
