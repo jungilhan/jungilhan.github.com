@@ -6,17 +6,17 @@ define(['constants'/*, 'lib/google-game-api/gapi-chrome-apps'*/], function(Const
   function loadClient_() {
     // Load up /games/v1
     gapi.client.load('games','v1',function(response) {
-
+      console.log('games:' + response);
     });
 
     // Load up v1management
     gapi.client.load('gamesManagement','v1management', function(response) {
-      
+      console.log('gamesManagement: ' + response);
     });
 
     // Load up /plus/v1
     gapi.client.load('plus','v1', function(response) {
-      
+      console.log('plus: ' + response);
     });
   }
 
