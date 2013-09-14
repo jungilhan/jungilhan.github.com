@@ -1,4 +1,4 @@
-define(['config', 'lib/collie'], function(Config) {
+define(['config', 'jquery', 'lib/collie'], function(Config, $) {
   /** @private */
   var width_ = Config.width();
   var height_ = Config.height();
@@ -516,6 +516,7 @@ define(['config', 'lib/collie'], function(Config) {
       click: function(e) {
         if (callbacks_ != null && callbacks_.onbrag != null) {
           callbacks_.onbrag(params.mode, params.stage);
+          $('#bragButton').click();
         }
       }
     });

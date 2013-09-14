@@ -296,7 +296,7 @@ define(['view/gameView', 'model/marbles', 'controller/audio', 'model/effects', '
   function onbrag_(mode, stage) {
     // Let's generate the deep-link ID so we can link on mobile devices
     var challengeObject = Challenge.generate(mode, stage);
-    var prefilltext = '[Marble Wars] ' + challengeObject.user + ' 님이 난이도 ' + mode + '의 ' + stage + '번 스테이지를 클리어했습니다!';
+    var prefilltext = '[Marble Wars] ' + challengeObject.user + '님이 난이도 ' + mode + '의 ' + stage + '번 스테이지를 클리어했습니다!';
 
     // Let's JSONify it
     var challengeString = JSON.stringify(challengeObject);
