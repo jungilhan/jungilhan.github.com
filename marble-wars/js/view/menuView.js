@@ -185,7 +185,7 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
 
     var gplusLoginIcon = new collie.DisplayObject({
       x: 180,
-      y: 12,
+      y: 8,
       backgroundImage: 'menuGplusSignin'
     }).addTo(login);
 

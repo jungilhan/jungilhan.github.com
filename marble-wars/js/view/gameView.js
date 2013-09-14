@@ -30,7 +30,7 @@ define(['config', 'lib/collie'], function(Config) {
 
     var displayObjects = addDisplayObjects_(layer, params);
     displayObjects.heaps = createMables_(displayObjects.heaps, params.marbles);
-    bindEvent_(displayObjects);
+    bindEvent_(displayObjects, params);
 
     drawDisplay_(displayObjects.heaps);
 
@@ -193,6 +193,18 @@ define(['config', 'lib/collie'], function(Config) {
     }).text('당신이 이겼습니다!').addTo(winPopup);
     */
 
+    var brag = new collie.Text({
+      x : 0,
+      y : 180,
+      width : 554,
+      height : 40,
+      fontColor : '#000000',
+      fontSize: 28,
+      fontWeight: 'bold',
+      visible: false,
+      textAlign: 'center'
+    }).text('Google+에 자랑하기!').addTo(winPopup);
+
     var winPopupAgain = new collie.DisplayObject({
       x: 90,
       y: 290,
@@ -248,9 +260,10 @@ define(['config', 'lib/collie'], function(Config) {
       mode: mode,
       stage: stage,
       dim: dim,
-      winPopup: winPopup,      
+      winPopup: winPopup,
+      brag: brag, 
       winAgain: winPopupAgain,
-      winNext: winPopupNextStage,
+      winNext: winPopupNextStage,      
       losePopup: losePopup,
       loseAgain: losePopupAgain
     };
@@ -349,8 +362,9 @@ define(['config', 'lib/collie'], function(Config) {
   /** 
    * 객체에 대한 이벤트를 등록한다.
    * @param {Object} displayObjects 화면에 보여지는 객체 집합
+   * @param {Object} parmas 옵션 정보
    */
-  function bindEvent_(displayObjects) {    
+  function bindEvent_(displayObjects, params) {    
     for (var i = 0; i < displayObjects.heaps.length; i++) {
       displayObjects.heaps[i].rectangle.detachAll();
       displayObjects.heaps[i].rectangle.attach({
@@ -494,6 +508,15 @@ define(['config', 'lib/collie'], function(Config) {
           hideWinPopup(displayObjects);
           callbacks_.onnext();
           detachAll_(displayObjects);
+        }
+      }
+    });
+
+    displayObjects.brag.attach({
+      click: function(e) {
+        if (callbacks_ != null && callbacks_.onbrag != null) {
+          var challenge = callbacks_.onbrag(params.mode, params.stage);
+          console.log(challenge);
         }
       }
     });
@@ -692,6 +715,7 @@ define(['config', 'lib/collie'], function(Config) {
     displayObjects.winPopup.set({visible: true});
     displayObjects.winAgain.set({visible: true});
     displayObjects.winNext.set({visible: true});
+    displayObjects.brag.set({visible: true});
   }
 
   /** 
@@ -703,6 +727,7 @@ define(['config', 'lib/collie'], function(Config) {
     displayObjects.winPopup.set({visible: false});
     displayObjects.winAgain.set({visible: false});
     displayObjects.winNext.set({visible: false});
+    displayObjects.brag.set({visible: false});
   }
 
   /** 
