@@ -60,7 +60,7 @@ Get ready, player!
   // page, so that this extra redirection step isn't necessary.
   // And in a production game, you might want to consider doing that.
 
-  window.location.href = 'http://www.example.com/mygame/index.html?' + window.location.search.substring(1);
+  window.location.href = 'http://jungilhan.github.io/type-a-number-js/index.html?' + window.location.search.substring(1);
 
 
 

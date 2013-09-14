@@ -24,17 +24,17 @@
 
 var constants = constants || {};
 
-constants.ACH_PRIME = 'AAAAAAAAAA';
-constants.ACH_BORED ='BBBBBBBBBB';
-constants.ACH_HUMBLE = 'CCCCCCCCCC';
-constants.ACH_COCKY = 'DDDDDDDDDD';
-constants.ACH_LEET = 'EEEEEEEEEE';
-constants.ACH_REALLY_BORED = 'FFFFFFFFFF';
+constants.ACH_PRIME = 'CgkIysK75dITEAIQAQ';
+constants.ACH_BORED ='CgkIysK75dITEAIQAg';
+constants.ACH_HUMBLE = 'CgkIysK75dITEAIQAw';
+constants.ACH_COCKY = 'CgkIysK75dITEAIQBA';
+constants.ACH_LEET = 'CgkIysK75dITEAIQBQ';
+constants.ACH_REALLY_BORED = 'CgkIysK75dITEAIQBg';
 
-constants.LEADERBOARD_EASY = 'GGGGGGGGGG';
-constants.LEADERBOARD_HARD = 'HHHHHHHHHH';
+constants.LEADERBOARD_EASY = 'CgkIysK75dITEAIQCA';
+constants.LEADERBOARD_HARD = 'CgkIysK75dITEAIQBw';
 
-constants.CLIENT_ID = '1234567890.apps.googleusercontent.com';
-constants.APP_ID = '1234567890';
+constants.CLIENT_ID = '675059523914.apps.googleusercontent.com';
+constants.APP_ID = '675059523914';
 
-constants.LINK_PAGE_BASE = 'https://www.example.com/linkPage/index.php';
+constants.LINK_PAGE_BASE = 'http://jungilhan.github.io/type-a-number-js/linkPage/index.php';
