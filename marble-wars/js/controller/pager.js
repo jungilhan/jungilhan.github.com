@@ -20,6 +20,6 @@ define(['config', 'controller/menu', 'controller/stage'], function(Config, Menu,
   }
 
   return {
-  	start: start
+    start: start
   };
 });

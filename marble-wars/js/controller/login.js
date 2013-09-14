@@ -1,12 +1,14 @@
-define(['constants'/*, 'lib/google-game-api/gapi-chrome-apps'*/], function(Constants) {
+define(['constants', 'controller/player'], function(Constants, Player) {
   var userId_ = '';
   var loggedIn_ = false;
   var scopes_ = 'https://www.googleapis.com/auth/games';
+  var oncompleted_ = null;
 
   function loadClient_() {
     // Load up /games/v1
     gapi.client.load('games','v1',function(response) {
       console.log('games:' + response);
+      Player.load();
     });
 
     // Load up v1management
@@ -29,6 +31,14 @@ define(['constants'/*, 'lib/google-game-api/gapi-chrome-apps'*/], function(Const
     } else {
       console.log('Please login!');
     }
+
+    if (oncompleted_ != null) {
+      oncompleted_({
+        name: Player.name(),
+        profileUrl: Player.profileUrl(),
+        userId: Player.userId()
+       });
+    }
   }
 
   function silent() {
@@ -38,7 +48,8 @@ define(['constants'/*, 'lib/google-game-api/gapi-chrome-apps'*/], function(Const
     }, 1);  
   }
 
-  function showDialog() {
+  function showDialog(oncompleted) {
+    oncompleted_ = oncompleted;
     gapi.auth.authorize({client_id: Constants.clientId(), scope: scopes_, immediate: false}, handleAuthResult_);
   }
 

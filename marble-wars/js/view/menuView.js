@@ -1,4 +1,4 @@
-define(['config', 'lib/collie'], function(Config) {
+define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
   /** @private */
   var width_ = Config.width();
   var height_ = Config.height();
@@ -225,6 +225,31 @@ define(['config', 'lib/collie'], function(Config) {
       icon: effectsIcon
     });
 
+    /**
+     * 디버그 콘솔
+     */
+    var debug = new collie.Rectangle({
+      x: 10,
+      y: 380,
+      width: 780,
+      height: 90,
+      strokeColor: 'white',
+      strokeWidth: 1,
+      radius : 8,
+      visible: true
+    }).addTo(layer);
+
+    var debugText = new collie.Text({
+      x : 10,
+      y : 10,
+      fontColor : 'white',
+      fontSize: 14      
+    }).text(Player.name() == '' ? 'Please login' : Player.name()).addTo(debug);
+
+    debug.set({
+      text: debugText
+    });
+
     return {
       rule: rule,
       settings: settings,
@@ -234,7 +259,8 @@ define(['config', 'lib/collie'], function(Config) {
       hard: hard,
       dim: dim,
       rulePopups: rulePopups,
-      settingsPopup: settingsPopup
+      settingsPopup: settingsPopup,
+      debug: debug
     };
   }
 
@@ -308,7 +334,12 @@ define(['config', 'lib/collie'], function(Config) {
       click: function(e) {
         console.log('login clicked');
         if (callbacks_ != null && callbacks_.onlogin != null) {
-          callbacks_.onlogin();
+          callbacks_.onlogin(function(player) {
+            console.log('login callback called!');
+            displayObjects.debug.get('text').set({
+              text: player.name() + ' ' + player.profileUrl() + ' ' + player.userId()
+            });
+          });
         }
       }
     });
