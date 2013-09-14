@@ -29,7 +29,7 @@ define(['constants'/*, 'lib/google-game-api/gapi-chrome-apps'*/], function(Const
     console.log('We are in handle auth result');
     if (auth) {
       console.log('Hooray! You\'re logged in!');
-      login.loadClient();
+      loadClient();
 
     } else {
       console.log('Please login!');
