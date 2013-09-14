@@ -1,4 +1,4 @@
-define(['view/menuView', 'controller/stage', 'controller/audio', 'model/effects'], function(Menu, Stage, Audio, Effects) {
+define(['view/menuView', 'controller/stage', 'controller/audio', 'model/effects', 'controller/login'], function(Menu, Stage, Audio, Effects, Login) {
   /** 
    * 메뉴 시작 함수.
    */
@@ -30,7 +30,8 @@ define(['view/menuView', 'controller/stage', 'controller/audio', 'model/effects'
       oneasy: oneasy_,
       onnormal: onnormal_, 
       onhard: onhard_,
-      oneffects: oneffects_
+      oneffects: oneffects_,
+      onlogin: onlogin_
     });
   }
 
@@ -97,6 +98,13 @@ define(['view/menuView', 'controller/stage', 'controller/audio', 'model/effects'
     Effects.set(enable);
 
     return enable;
+  }
+  
+  /** 
+   * 로그인 콜백 함수.
+   */
+  function onlogin_() {
+    Login.init();
   }
 
   return {

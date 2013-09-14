@@ -140,6 +140,9 @@ define(['config', 'lib/collie'], function(Config) {
       rulePopups.push(popup);
     }
 
+    /**
+     * 설정 팝업
+     */
     var settingsPopup = new collie.DisplayObject({
         x: (width_ - 554) / 2,
         y: (height_ - 433) / 2,
@@ -157,7 +160,10 @@ define(['config', 'lib/collie'], function(Config) {
       visible: false
     }).addTo(settingsPopup);
 
-    var effects = new collie.Rectangle({
+    /**
+     * 로그인 
+     */
+    var login = new collie.Rectangle({
       x: 130,
       y: 150,
       width: 300,
@@ -173,7 +179,36 @@ define(['config', 'lib/collie'], function(Config) {
       x : 30,
       y : 10,
       fontColor : 'black',
-      fontSize: 32,
+      fontSize: 28,
+      fontWeight: 'bold',
+    }).text('Login').addTo(login);
+
+    var gplusLoginIcon = new collie.DisplayObject({
+      x: 180,
+      y: 12,
+      backgroundImage: 'menuGplusSignin'
+    }).addTo(login);
+
+    /**
+     * 효과음
+     */
+    var effects = new collie.Rectangle({
+      x: 130,
+      y: 210,
+      width: 300,
+      height: 60,
+      strokeColor: 'black',
+      strokeWidth: 0,
+      visible: false
+    }).addTo(settingsPopup);
+
+    new collie.Text({
+      width : 100,
+      height : 50,
+      x : 30,
+      y : 10,
+      fontColor : 'black',
+      fontSize: 28,
       fontWeight: 'bold',
     }).text('Sound').addTo(effects);
     
@@ -185,6 +220,7 @@ define(['config', 'lib/collie'], function(Config) {
 
     settingsPopup.set({
       close: close,
+      login: login,
       effects: effects,
       icon: effectsIcon
     });
@@ -244,7 +280,7 @@ define(['config', 'lib/collie'], function(Config) {
       }
     });
 
-    var effects = displayObjects.settingsPopup.get('effects')    
+    var effects = displayObjects.settingsPopup.get('effects');
     effects.attach({
       click: function(e) {
         console.log('effects clicked');
@@ -263,6 +299,16 @@ define(['config', 'lib/collie'], function(Config) {
           icon.set({
             backgroundImage: 'menuSettingsSoundOff'
           });
+        }
+      }
+    });
+
+    var login = displayObjects.settingsPopup.get('login');
+    login.attach({
+      click: function(e) {
+        console.log('login clicked');
+        if (callbacks_ != null && callbacks_.onlogin != null) {
+          callbacks_.onlogin();
         }
       }
     });
@@ -386,7 +432,8 @@ define(['config', 'lib/collie'], function(Config) {
     displayObjects.dim.set({visible: true});
     displayObjects.settingsPopup.set({visible: true});
     displayObjects.settingsPopup.get('close').set({visible: true});
-    displayObjects.settingsPopup.get('effects').set({visible: true});
+    displayObjects.settingsPopup.get('login').set({visible: true});
+    displayObjects.settingsPopup.get('effects').set({visible: true});    
   } 
   
   /** 
@@ -397,6 +444,7 @@ define(['config', 'lib/collie'], function(Config) {
     displayObjects.dim.set({visible: false});
     displayObjects.settingsPopup.set({visible: false});
     displayObjects.settingsPopup.get('close').set({visible: false});
+    displayObjects.settingsPopup.get('login').set({visible: false});
     displayObjects.settingsPopup.get('effects').set({visible: false});
   } 
 
