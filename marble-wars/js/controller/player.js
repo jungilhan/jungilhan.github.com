@@ -13,7 +13,7 @@ define([], function() {
       userId_ = response.playerId;
 
       if (oncompleted != null) {
-        oncompleted_({
+        oncompleted({
           name: name_,
           profileUrl: profileUrl_,
           userId: userId_,
