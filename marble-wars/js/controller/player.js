@@ -17,7 +17,7 @@ define([], function() {
           name: name_,
           profileUrl: profileUrl_,
           userId: userId_,
-          success: profileUrl_ != '' : true ? false
+          success: profileUrl_ != '' ? true : false
        });
       }
     });
