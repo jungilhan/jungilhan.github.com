@@ -1,4 +1,4 @@
-define(['controller/intro', 'controller/audio', 'controller/login', 'jquery', 'lib/collie'], function(Intro, Audio, Login, $) {
+define(['controller/intro', 'controller/audio', 'controller/login', 'lib/toastr', 'jquery', 'lib/collie'], function(Intro, Audio, Login, Toast, $) {
   /** 
    * Application 시작 함수.
    */
@@ -6,7 +6,7 @@ define(['controller/intro', 'controller/audio', 'controller/login', 'jquery', 'l
     // 구글+ 로그인
     Login.silent(function(auth) {      
       if (auth.success) {
-        console.log('Logged in, ' + auth);        
+        console.log(auth);
         Toast.options.positionClass = 'toast-top-left';
         Toast.success('Welcome! ' + auth.name);
       }
