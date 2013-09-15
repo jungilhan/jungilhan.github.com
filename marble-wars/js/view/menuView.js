@@ -164,7 +164,7 @@ define(['config', 'controller/player', 'lib/toastr', 'lib/collie'], function(Con
       y : 54,
       fontColor : 'white',
       fontSize: 12
-    }).text(loggedin ? 'Sign out' : ' Sign in').addTo(login);
+    }).text(loggedin ? '' : ' Sign in').addTo(login);
 
     login.set({
       icon: gplusIcon,
@@ -305,20 +305,24 @@ define(['config', 'controller/player', 'lib/toastr', 'lib/collie'], function(Con
     displayObjects.login.attach({
       click: function(e) {
         if (callbacks_ != null && callbacks_.onlogin != null) {
-          callbacks_.onlogin(function(auth) {
-            console.log('login callback called! ' + auth);
-            Toast.options.positionClass = 'toast-top-left';
+          if (displayObjects.login.get('icon').get('backgroundImage') == 'menuGplusSignin') {
+            callbacks_.onlogin(function(auth) {
+              console.log('login callback called! ' + auth);
+              Toast.options.positionClass = 'toast-top-left';
+              
+              if (auth.success) {
+                displayObjects.login.get('icon').set({backgroundImage: 'menuGplusSignout'});
+                displayObjects.login.get('msg').text('');
+                Toast.success('Welcome! ' + auth.name);
+              } else {
+                displayObjects.login.get('icon').set({backgroundImage: 'menuGplusSignin'});
+                displayObjects.login.get('msg').text(' Sign in');
+                Toast.error('Failed to sign in');
+              }
+            });
+          } else {
             
-            if (auth.success) {
-              displayObjects.login.get('icon').set({backgroundImage: 'menuGplusSignout'});
-              displayObjects.login.get('msg').text('Sign out');                            
-              Toast.success('Welcome! ' + auth.name);
-            } else {
-              displayObjects.login.get('icon').set({backgroundImage: 'menuGplusSignin'});
-              displayObjects.login.get('msg').text(' Sign in');
-              Toast.error('Failed to sign in');
-            }            
-          });
+          }
         }
       }
     });
