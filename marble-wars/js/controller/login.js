@@ -8,7 +8,7 @@ define(['constants', 'controller/player'], function(Constants, Player) {
     // Load up /games/v1
     gapi.client.load('games','v1',function(response) {
       console.log('games: ' + response);
-      Player.load();
+      Player.load(oncompleted_);
     });
 
     // Load up v1management
@@ -23,25 +23,21 @@ define(['constants', 'controller/player'], function(Constants, Player) {
   }
 
   function handleAuthResult_(auth) {
-    console.log('We are in handle auth result');
-    var success = true;
-
+    console.log('We are in handle auth result');    
     if (auth) {
       console.log('Hooray! You\'re logged in!');      
       loadClient_();
 
     } else {
       console.log('Please login!');
-      success = false;
-    }
-
-    if (oncompleted_ != null) {
-      oncompleted_({
-        name: Player.name(),
-        profileUrl: Player.profileUrl(),
-        userId: Player.userId(),
-        success: success
+      if (oncompleted_ != null) {
+        oncompleted_({
+          name: '',
+          profileUrl: '',
+          userId: '',
+          success: false
        });
+      }
     }
   }
 
