@@ -3,6 +3,8 @@ define(['controller/intro', 'controller/audio', 'controller/login', 'lib/toastr'
    * Application 시작 함수.
    */
   function start() {   
+    prepareResource_();
+
     // 구글+ 로그인
     Login.silent(function(auth) {      
       if (auth.success) {
@@ -11,8 +13,6 @@ define(['controller/intro', 'controller/audio', 'controller/login', 'lib/toastr'
         Toast.success('Welcome! ' + auth.name);
       }
     });
-
-    prepareResource_();
   }
 
   /** 

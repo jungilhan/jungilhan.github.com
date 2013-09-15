@@ -46,7 +46,7 @@ define(['constants', 'controller/player'], function(Constants, Player) {
     oncompleted_ = oncompleted;
     window.setTimeout(function() {
       gapi.auth.authorize({client_id: Constants.clientId(), scope: scopes_, immediate: true}, handleAuthResult_);
-    }, 1);  
+    }, 10);  
   }
 
   function showDialog(oncompleted) {
