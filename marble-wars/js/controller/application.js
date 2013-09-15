@@ -4,7 +4,13 @@ define(['controller/intro', 'controller/audio', 'controller/login', 'jquery', 'l
    */
   function start() {   
     // 구글+ 로그인
-    Login.silent();
+    Login.silent(function(auth) {      
+      if (auth.success) {
+        console.log('Logged in, ' + auth);        
+        Toast.options.positionClass = 'toast-top-left';
+        Toast.success('Welcome! ' + auth.name);
+      }
+    });
 
     prepareResource_();
   }
@@ -42,6 +48,7 @@ define(['controller/intro', 'controller/audio', 'controller/login', 'jquery', 'l
       menuSettingsSoundOn: 'img/settings-sound-on.png',
       menuSettingsSoundOff: 'img/settings-sound-off.png',
       menuGplusSignin: 'img/gplus_signin.png',
+      menuGplusSignout: 'img/gplus_signout.png',
 
       // 세부 메뉴 
       stageBackground: 'img/mini-background-e.png',

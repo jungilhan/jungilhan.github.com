@@ -1,4 +1,4 @@
-define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
+define(['config', 'controller/player', 'lib/toastr', 'lib/collie'], function(Config, Player, Toast) {
   /** @private */
   var width_ = Config.width();
   var height_ = Config.height();
@@ -140,9 +140,38 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       rulePopups.push(popup);
     }
 
-    /**
-     * 설정 팝업
-     */
+    // 로그인 
+    var login = new collie.Rectangle({
+      x: 20,
+      y: 20,
+      width: 60,
+      height: 70,
+      strokeColor: 'white',
+      strokeWidth: 0
+    }).addTo(layer);
+
+    var loggedin = Player.name() != '' ? true : false;
+    var gplusIcon = new collie.DisplayObject({
+      x: 0,
+      y: 0,
+      backgroundImage: loggedin ? 'menuGplusSignout' : 'menuGplusSignin'
+    }).addTo(login);
+
+    var msg = new collie.Text({
+      width : 50,
+      height : 20,
+      x : 8,
+      y : 54,
+      fontColor : 'white',
+      fontSize: 12
+    }).text(loggedin ? 'Sign out' : ' Sign in').addTo(login);
+
+    login.set({
+      icon: gplusIcon,
+      msg: msg
+    });
+
+    // 설정 팝업
     var settingsPopup = new collie.DisplayObject({
         x: (width_ - 554) / 2,
         y: (height_ - 433) / 2,
@@ -160,41 +189,10 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       visible: false
     }).addTo(settingsPopup);
 
-    /**
-     * 로그인 
-     */
-    var login = new collie.Rectangle({
-      x: 130,
-      y: 150,
-      width: 300,
-      height: 60,
-      strokeColor: 'black',
-      strokeWidth: 0,
-      visible: false
-    }).addTo(settingsPopup);
-
-    new collie.Text({
-      width : 100,
-      height : 50,
-      x : 30,
-      y : 10,
-      fontColor : 'black',
-      fontSize: 28,
-      fontWeight: 'bold',
-    }).text('Login').addTo(login);
-
-    var gplusLoginIcon = new collie.DisplayObject({
-      x: 180,
-      y: 8,
-      backgroundImage: 'menuGplusSignin'
-    }).addTo(login);
-
-    /**
-     * 효과음
-     */
+    // 효과음
     var effects = new collie.Rectangle({
       x: 130,
-      y: 210,
+      y: 150,
       width: 300,
       height: 60,
       strokeColor: 'black',
@@ -225,34 +223,6 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       icon: effectsIcon
     });
 
-    /**
-     * 디버그 콘솔
-     */
-    var debug = new collie.Rectangle({
-      x: 10,
-      y: 380,
-      width: 780,
-      height: 90,
-      strokeColor: 'white',
-      strokeWidth: 1,
-      radius : 8,
-      visible: false
-    }).addTo(layer);
-
-    var playerInfo = Player.name() + '\n' + Player.profileUrl() + '\n' + Player.userId();
-    var debugText = new collie.Text({
-      x : 10,
-      y : 10,
-      width: 760,
-      height: 70,
-      fontColor : 'white',
-      fontSize: 14
-    }).text(Player.name() == '' ? 'Please login' : playerInfo).addTo(debug);
-
-    debug.set({
-      text: debugText
-    });
-
     return {
       rule: rule,
       settings: settings,
@@ -263,7 +233,7 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       dim: dim,
       rulePopups: rulePopups,
       settingsPopup: settingsPopup,
-      debug: debug
+      login: login
     };
   }
 
@@ -332,16 +302,22 @@ define(['config', 'controller/player', 'lib/collie'], function(Config, Player) {
       }
     });
 
-    var login = displayObjects.settingsPopup.get('login');
-    login.attach({
+    displayObjects.login.attach({
       click: function(e) {
-        console.log('login clicked');
         if (callbacks_ != null && callbacks_.onlogin != null) {
-          callbacks_.onlogin(function(player) {
-            console.log('login callback called!');
-            displayObjects.debug.get('text').set({
-              text: player.name + '\n' + player.profileUrl + '\n' + player.userId
-            });
+          callbacks_.onlogin(function(auth) {
+            console.log('login callback called! ' + auth);
+            Toast.options.positionClass = 'toast-top-left';
+            
+            if (auth.success) {
+              displayObjects.login.get('icon').set({backgroundImage: 'menuGplusSignout'});
+              displayObjects.login.get('msg').text('Sign out');                            
+              Toast.success('Welcome! ' + auth.name);
+            } else {
+              displayObjects.login.get('icon').set({backgroundImage: 'menuGplusSignin'});
+              displayObjects.login.get('msg').text(' Sign in');
+              Toast.error('Failed to sign in');
+            }            
           });
         }
       }

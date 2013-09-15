@@ -24,25 +24,30 @@ define(['constants', 'controller/player'], function(Constants, Player) {
 
   function handleAuthResult_(auth) {
     console.log('We are in handle auth result');
+    var success = true;
+
     if (auth) {
-      console.log('Hooray! You\'re logged in!');
+      console.log('Hooray! You\'re logged in!');      
       loadClient_();
 
     } else {
       console.log('Please login!');
+      success = false;
     }
 
     if (oncompleted_ != null) {
       oncompleted_({
         name: Player.name(),
         profileUrl: Player.profileUrl(),
-        userId: Player.userId()
+        userId: Player.userId(),
+        success: success
        });
     }
   }
 
-  function silent() {
+  function silent(oncompleted) {
     console.log('Trying silent auth');
+    oncompleted_ = oncompleted;
     window.setTimeout(function() {
       gapi.auth.authorize({client_id: Constants.clientId(), scope: scopes_, immediate: true}, handleAuthResult_);
     }, 1);  
